@@ -464,13 +464,35 @@ _site/
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "<my_account>.github.io/<repository_name>" # the base hostname & protocol for your site, e.g. http:/
 
-### 34) Build the site
+### 34) Build the site and commit
 With the Gemfile and bundler we need to adapt our build and serve commands
 > $ bundle exec jekyll serve
+> $ git add .
+> $ git commit -m "source code"
 
-###  35) Move compiled code to new branch
-> git branch gh-pages
-> git checkout gh-pages _site
+###  35) Move compiled code to new branch and commit
+#### Create new branch
+> $ git branch gh-pages
+
+#### Check out to new branch
+> $ git checkout gh-pages
+
+#### Remove all files for this branch
+> $ git rm -rf .
+
+#### Retrieve .gitignore and activate _size
+> $ git checkout master -- .gitignore
+> vim .gitignore
+
+#### Input
+remove _size from file
+```bash
+.sass-cache
+.jekyll-metadata
+```
+
+#### commit changes
+> $ git commit -m "_site"
 
 ### 36) Open account and repository
 Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn't work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. You can make a branch gh-pages which contains only the _site folder. With a user page the source code works fine. 
@@ -491,7 +513,8 @@ project page: https://<my_account>.github.io/<project_name>
 #### Settings
 In your repostitory on Github go to settings tab, scroll down to GitHub Pages section and choose your branch (master, master/docs or gh-pages). 
 
-### 37) Add, commit and push both branches of your website to GitHub.
-> $ git add .
-> $ git commit -m "message text"
+### 37) push both branches of your website to GitHub.
+> $ git checkout master
 > $ git push
+> $ git checkout gh-pages
+> $ git push --set-upstream origin gh-pages
