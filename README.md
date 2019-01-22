@@ -1,26 +1,29 @@
 
-# Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.
+# Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.
 
 ## Learning objectives
-Throughout each of the following steps you will be confronted with error messages and learn, what's going on behind the scenes and see how easy it then becomes to make it all work.  
+Throughout each of the following steps you will see the output, are confronted with error messages, learn, what's going on behind the scenes and see, how easy it then becomes to make it all work.  
 
 Our journey starts with the minimum of what it takes to build a webpage. We then add a first page, and a reference to load a theme. At that point we have a nicely rendered webpage.   
 
-We then copy/paste the gem based theme source code into our repository add a reference to a now missing dependency. At that point, we could start changing the theme's source code and make our own theme. Instead, we take a step back and make the necessary changes to activate another gem based theme. 
+We then copy/paste the gem based theme source code into our repository and add a reference to a now missing dependency. At that point, we could start changing the theme's source code and make our own theme. Instead, we take a step back and make the necessary changes to activate another gem based theme. 
 
 Then we add a Gemfile to our repository, which makes sure that our webpage also works, when some dependencies are updated. For this to work we need another gem called bundler, which knows all about the dependencies and generates a Gemfile.lock file, containing all the dependencies and its versions.
 
-The next step is to make our website behave exacty like the starter template you would get, when with the shell command:  
+The next step is to make our website behave exacty like the starter template by applying the shell command:  
 > $ jekyll new <relative_path_to/repository_name>
 
-And finally we are going to upload the source code in the master branch and publish the compiled website in a new branch called gh-pages on Github.
+And finally we are going to upload the source code to the master branch and publish the compiled website in a new branch called gh-pages on Github.
 
-The result can be accessed with following URL:
-https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html
+The result can be accessed with following URL:  
 
-## Make our first website with jekyll
+[GitHub](https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html)
+
+## Let's make our first website with jekyll
 ### 1) Create an empty folder
-> $ mkdir relative_path_to/Repository_name
+> $ mkdir relative_path_to/Repository_name  
+
+(For shell newbies: do not write the $ signs.)
 
 ### 2) Install gem
 > $ gem install 'jekyll'
@@ -65,10 +68,12 @@ README.md	2019/01/21 20:06	474
 WEBrick/1.4.2 (Ruby/2.6.0/2018-12-25)
 at localhost:4000
 ```
-It does not show the folder name _size:  _size folder is the Parent Directory
+It does not show the folder with name _size because the  _size folder is the Parent Directory.
 
 ### 5) Add README.md
-> $ vim README.md 
+> $ vim README.md  
+
+(for vim newbies: press `i` to input text, copy into system's clipboard `"+y`, paste from system's clipboard `"+p`, press Esc to leave the input mode, to write from buffer to file `:w`, to quit vim `:q`.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)
 
 ### 6) Check directory
 > $ ls
@@ -81,6 +86,8 @@ _site
 > $ vim index.html 
 
 #### Input:
+Jekyll only needs the body tag.  
+
 ```html
 <!--  the html tag and head tag can be removed -->
 <body>
@@ -88,13 +95,13 @@ _site
 </body>
 ``` 
 
-#### Browser output
+#### Browser output:
 ```html
 Hello World!
 ```
 It has no theme.
 
-## Our first webpage with theme
+## Let's make our first webpage with theme
 ### 8) Add _config.yml file and theme
 > $ vim _config.yml
 
@@ -132,12 +139,14 @@ Invalid theme folder: _includes
                     ...done in 0.218392727 seconds.
 ```
 
-There is a warning saying *Invalid theme folder: _includes*  
+There is a warning saying *Invalid theme folder: _includes*. We will investigate later. 
 
 ### 10) Add Front Matter to index.html
 > $ vim index.html
 
 #### Input:
+Front matter is jekylls way to add variables to a file and give instructions like the layout we want to apply to the file
+
 ```html
 ---
 title: Home
@@ -180,6 +189,8 @@ title: Home
 
 ```
 
+Since we have no default.html file, jekyll is taking the one from the theme we defined in step 8).  
+
 ### 13) Stop and Start server
 > $ jekyll serve
 
@@ -189,9 +200,12 @@ There is still the warning saying *Invalid theme folder: _includes*
 #### Browser output:
 > ta da!  
 ![webpage](/assets/website.jpg)
+![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
 
-## Convert the gem based theme to a regular theme
-### 14) Let's understand the warning
+## Let's convert the gem based theme to a regular theme
+### 14) Understand the warning about _includes
+The command shows the path to the gem.  
+
 > $ bundle show dinky
 
 #### Output:
@@ -199,20 +213,23 @@ There is still the warning saying *Invalid theme folder: _includes*
 /home/benzro/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-dinky-0.1.1
 /.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-hacker-0.1.1
 ```
+
+We can check the content as follows or just use a file manager.
 > $ ls $(bundle show dinky)
 
 #### Output:
 ```bash
 assets  _layouts  LICENSE  README.md  _sass
 ```
-It just means, that the dinky theme has no _includes folder. We could add one and the warning would disappear until the theme is updated. So, we just ignore it and do something else. We convert the gem based theme into a regular theme.
+The warning obviously just means, that the dinky theme has no _includes folder. We could add one and the warning would disappear until the theme gets updated. So, we just ignore it and do something else. We convert the gem based theme into a regular theme.
 
 ### 15) Copy the gem code into your repository
 
-Let's open the Filemanager and show the folder of the dinky theme. 
+Let's open the Filemanager and show the folder of the dinky theme. The command works on linux, mac uses `open`.  
+
 > $ xdg-open $(bundle show dinky)
 
-We now copy/paste the whole content of the dinky theme into our repostitory
+We now copy/paste the whole content of the dinky theme via file manager into our repostitory. You should have the following folder structure in  your repository. 
 > $ ls
 
 #### Output:
@@ -221,6 +238,7 @@ assets  _config.yml  index.html  _layouts  LICENSE  README.md  _sass  _site  web
 ```
 
 ### 16) Comment the theme
+We are going to comment the line, saying jekyll to load a theme.  
 > $ vim _config.yml
 
 #### Input:
@@ -242,9 +260,9 @@ assets  _config.yml  index.html  _layouts  LICENSE  README.md  _sass  _site  web
 We get the following error:   
 Liquid Exception: Liquid syntax error (line 7): Unknown tag 'seo' in /_layouts/default.html
 
-This is, what we should expect, when integrating the gem source into our repository. If the theme was hosted at RubyGems.org, we would have a  .gemspec showing the gems/plugins the theme depends on. But the source we copied didn't have a .gemspec file, so we can assume for the whitelisted GitHub themes, some magic is going on behind the scenes.  
+This is, what we should expect, when integrating the gem source into our repository. If the theme was hosted at RubyGems.org, we would have a  .gemspec file showing the gems/plugins the theme depends on. But the source we copied didn't have a .gemspec file, so we can assume for the whitelisted GitHub themes, hosted on github, some magic is going on behind the scenes.  
 
-Let's take a look at the source code at line 7
+Let's take a look at the source code at line 7. Its a command for the seo gem.  
 >  {% seo %}
 
 ### 18) Add the missing plugin
@@ -273,9 +291,12 @@ The warning *Invalid theme folder: _includes* also magically disappeared even th
 
 #### Browser output:
 > and boom, we are back again!  
+![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
 ![webpage](/assets/website.jpg)
 
 ### 20) Let's try and activate the merlot-theme
+We now uncomment the line telling jekyll to load the merlot theme.  
+
 > $ vim _config.yml
 
 #### Input:
@@ -296,7 +317,7 @@ theme: jekyll-theme-merlot
 #### Output:
 And the warning saying *Invalid theme folder: _includes* is back again. But the browser is still showing the dinky theme.   
 
-This is an important lesson, because it shows how jekyll works. It goes to the Merlot theme gem, complains about the missing _includes folder, and starts loading the theme files, which are not present in our repository. But because we have the dinky source in our repository, and which follows the same naming convention, dinky theme remains active. And this is also the reason, why some smart people came up with gem based themes.  
+> This is an important lesson, because it shows, how jekyll works. It goes to the Merlot theme gem, complains about the missing _includes folder, and starts loading the theme files, which are not present in our repository. But because we have the dinky source in our repository, which follows the same naming convention, the dinky theme remains active. And this is also the reason, why some smart people invented gem based themes.    
 
 ### 22) Rename the folders
 #### Input:
@@ -307,14 +328,16 @@ The server starts complaining after the first renaming, but after all three fold
 
 #### Browser output:
 > howdy, merlot!  
-![webpage22](/assets/website2.jpg)
-
+![webpage](/qool-jekyll_step_by_step-loop/assets/website2.jpg)
+![webpage](/assets/website2.jpg)
+  
+You should now have the following folder structure.  
 > $ ls
 
 #### Output:
 assets_  _config.yml  index.html  _layouts_  LICENSE  README.md  _sass_  _site  website.jpg
 
-## Lock the dependencies
+## Let's lock the dependencies
 ### 23) Add a Gemfile file
 > $ vim Gemfile
 
@@ -323,7 +346,7 @@ assets_  _config.yml  index.html  _layouts_  LICENSE  README.md  _sass_  _site  
 source 'https://rubygems.org'
 gem 'jekyll'
 ```
-This is similar to what we did in step 2), but now we let bundler lock the dependencies.
+This is similar to what we did in step 2), but now we let the bundler gem lock the dependencies.
 
 ### 24) Install bundler
 > $ gem install 'bundler'
@@ -331,7 +354,8 @@ This is similar to what we did in step 2), but now we let bundler lock the depen
 ### 25) Install gems and generate Gemfile.lock file
 > $ bundle install
 
-output: 
+#### Output:  
+```bash 
 Fetching gem metadata from https://rubygems.org/............                                                                           
 Fetching gem metadata from https://rubygems.org/..                                                                                     
 Resolving dependencies...                                                                                                              
@@ -363,19 +387,23 @@ Using safe_yaml 1.0.4
 Using jekyll 3.8.5
 Bundle complete! 1 Gemfile dependency, 26 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
+```
 
-### 26) Check directory
+### 26) Check directories
 > $ ls
 
-output:
+#### Output:
 assets_  _config.yml  Gemfile  Gemfile.lock  index.html  _layouts_  LICENSE  README.md  _sass_  _site
 
-## Turn the website into the default website
+## Let's turn the website into the default website
 We make now a new website and add the content of this README.md file to a new post.
 
 ### 27) New website
-> $ mkdir relative_path_to/repository_name
-> $ jekyll new .
+> $ mkdir relative_path_to/repository_name  
+  
+> $ jekyll new .   
+
+(The dot is needed)  
 
 #### Output:
 ```bash
@@ -443,20 +471,33 @@ categories: jekyll tutorial
 ```
 
 ### 30) Copy/paste images
-> cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md
-> cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md
+> cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md  
+
+> cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md  
 
 The path to the images in both the README and the post should be:
+/qool-jekyll_step_by_step-loop/assets/website.jpg
 /assets/website.md
+
+/qool-jekyll_step_by_step-loop/assets/website2.jpg
 /assets/website2.md
 
-## Deployment
+There is a better way of doing it, but that's good enough. The above path is for production environment, and the link below is for development environment. The links are created with following Markdown pattern.  
+
+```
+![link name](path to asset)  
+```
+
+## Let's Deploy to GitHub
 ### 31) Initialize git in your repository root
-> $ cd relative_path_to/repository_name
-> $ git init 
+Go to your repositorie's root and initialize git.
+ 
+> $ cd relative_path_to/repository_name  
+
+> $ git init   
 
 ### 32) Adapt the .gitignore file
-We do not want our  _site folder in our master branch, that's why the .gitignore file has following entry.  
+We do not want our  _site folder in our master branch, that's why the .gitignore file also has the following entry.  
 > $ vim .gitignore
 
 ```
@@ -464,35 +505,48 @@ _site/
 ```
 
 ### 33) Adapt the _config.yml file
-Do not believe the comments in the site template, if you are hosting on Github. You may also change here to another whitelisted theme, which is more appealing to you. 
+You may change here to another whitelisted theme, which is more appealing to you.  
+> $ vim _config.yml  
 
-#### For a user page
-baseurl: "<project_name>" # the subpath of your site, e.g. /blog
+> Important: Do not believe the comments in the site template regarding the URLs, if you are hosting on Github. 
+
+#### For a user page with compiled code
+baseurl: "<project_name>" # the subpath of your site, e.g. /blog  
+
 url: "" # the base hostname & protocol for your site, e.g. http:/
 
 #### For a project page
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog  
+
 url: "" # the base hostname & protocol for your site, e.g. http:/
 
 ### 34) Build the site and commit
-With the Gemfile and bundler we need to adapt our build and serve commands
-> $ bundle exec jekyll serve
-> $ git add .
-> $ git commit -m "source code"
+With the Gemfile and bundler we need to adapt our build and serve commands.
+> $ bundle exec jekyll serve  
 
-###  35) Move compiled code to new branch and commit
+> $ git add .  
+(The dot is needed)  
+
+> $ git commit -m "source code"  
+
+###  35) Move the compiled code to a new branch root and commit
 #### Create new branch
+The branch name is not arbitrary. Use gh-pages.  
 > $ git branch gh-pages
 
 #### Check out to new branch
+This will copy the snapshot from master branch into the new branch.  
 > $ git checkout gh-pages
 
 #### Remove all files for this branch
 > $ git rm -rf .
 
 #### Retrieve .gitignore and activate _site folder
-> $ git checkout master -- .gitignore
-> vim .gitignore
+Now we change the gitignore folder to make _site folder known to git and therefore visible for us in the new branch.  
+> $ git checkout master -- .gitignore  
+
+Remove the line _site.  
+> vim .gitignore  
 
 #### Input
 remove _site from .gitignore file
@@ -500,38 +554,103 @@ remove _site from .gitignore file
 .sass-cache
 .jekyll-metadata
 ```
-#### _site folder contents
-Move the content of _site folder to root, i.e. where the _size folder is and delete it. The index.html file must be visible there otherwise it is not going to work. You can take the your file manager or use `mv` or `git mv` command.
 
-#### commit changes
+The folder _site now becomes visible in the new branch.  
+
+#### _site folder contents
+Move the contents of the _site folder to root, i.e. where the _site folder is and delete it. The index.html file must reside in repository branch root, otherwise it is not going to work. You can take your file manager or use `mv` or `git mv` command.
+
+#### Commit changes
 > $ git commit -m " content of _site folder and .gitignore"
 
-### 36) Open account and repository
-Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn't work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file. Or you can make a user page, with a user page the source code works fine. 
+### 36) Open account and repository at GitHub
+Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn't work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file, like we just did. Or you can make a user page. With a user page the source code works fine. 
 
-#### Account name:  
-> <my_account>  
-
+#### Account name  
+Choose an account name.  
+```
+<my_account>  
+```
 #### Repository name for a user page
-This is a special repository. You can only have one user page per user account, with exactly the following naming condition.
-> <my_account>.github.io  
+This is a special repository. You can only have one user page per user account, with exactly the following naming condition.  
+```
+<my_account>.github.io  
+```
 
 #### Repository name for a project page
-If there would not be a user page repository, this would probably be called repository page, instead of project page.
-> <project_name>
+If there would not be a user page repository, this would probably be called repository page, instead of project page.  
+
+```
+<project_name>
+```
 
 #### Website URL
-user page: https://<my_account>.github.io  
-project page: https://<my_account>.github.io/<project_name>
+After uploading, the website is accessible under:  
+
+```
+user page: https://<my_account>.github.io    
+project page: https://<my_account>.github.io/<project_name>  
+```
 
 #### Settings
 In your repostitory on Github go to settings tab, scroll down to GitHub Pages section and choose your branch (master, master/docs or gh-pages). 
 
-### 37) push both branches of your website to GitHub.
-> $ git checkout master
-> $ git push
+### 37) Push both branches of your website to GitHub.
+> $ git checkout gh-pages  
+
+> $ git push --set-upstream origin gh-pages  
+
+> $ git checkout master   
+
+> $ git push  
+
+## Congratulation!
+You have just hosted your first webpage on Github.
+
+## Rebuild
+In case you want to upload an updated version to the gh-pages branch repeat following steps. 
+
+### 38) Checkout master branch and change source
+It assumes you make your changes in the master branch. Check that you are in the master branch before you start making changes and rebuild.  
+
+> $ git branch
+
+If the output is not master, checkout to master branch.  
+
+> $ git checkout master.  
+
+Make your changes to the source code.  
+
+### 39) Build the site and commit
+> $ bundle exec jekyll build  
+
+> $ git add .  
+(The dot is needed)  
+
+> $ git commit -m "source code"  
+
+###  40) Move the compiled code to gh-pages root and commit
+
 > $ git checkout gh-pages
-> $ git push --set-upstream origin gh-pages
+
+Again files and folders are copied over from the master branch. Assuming we still have the .gitignore from step 35) we should also see the _site folder.  
+
+> $ git status  
+ 
+#### _site folder contents
+Move the contents of the _site folder to root, i.e. where the _site folder is and delete it. The index.html file must reside in repository branch root, otherwise it is not going to work. You can take your file manager or use `mv` or `git mv` command.
+
+#### Commit changes
+> $ git commit -m " updated content of _site folder"
+
+### 41) Push both branches of your website to GitHub.
+> $ git checkout gh-pages  
+
+> $ git push  
+
+> $ git checkout master  
+
+> $ git push   
 
 ----
 qoolixiloop, 22. Jan. 2019
