@@ -5,8 +5,6 @@ date:   2019-01-22 03:56:34 +0100
 categories: jekyll tutorial
 ---
 
-# Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.
-
 ## Learning objectives
 Throughout each of the following steps you will see the output, are confronted with error messages, learn, what's going on behind the scenes and see, how easy it then becomes to make it all work.  
 
