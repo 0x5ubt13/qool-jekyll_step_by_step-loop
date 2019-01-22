@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Welcome to Jekyll’s step by step tutorial! | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Welcome to Jekyll’s step by step tutorial!" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github." />
+<meta property="og:description" content="Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github." />
+<link rel="canonical" href="http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-22T03:56:34+01:00" />
+<script type="application/ld+json">
+{"description":"Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html"},"@type":"BlogPosting","url":"http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html","headline":"Welcome to Jekyll’s step by step tutorial!","dateModified":"2019-01-22T03:56:34+01:00","datePublished":"2019-01-22T03:56:34+01:00","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Your awesome title</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Welcome to Jekyll&#39;s step by step tutorial!</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-01-22T03:56:34+01:00" itemprop="datePublished">Jan 22, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="step-by-step-jekyll-tutorial-installation-without-bundler-adding-a-page-adding-a-gem-based-theme-converting-the-gem-based-theme-to-a-regular-theme-go-back-to-a-gem-based-theme-add-a-gemfile-for-the-bundler-and-publish-it-on-github">Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.</h1>
+
+<h2 id="learning-objectives">Learning objectives</h2>
+<p>Throughout each of the following steps you will be confronted with error messages and learn, what’s going on behind the scenes and see how easy it then becomes to make it all work.</p>
+
+<p>Our journey starts with the minimum of what it takes to build a webpage. We then add a first page, and a reference to load a theme. At that point we have a nicely rendered webpage.</p>
+
+<p>We then copy/paste the gem based theme source code into our repository add a reference to a now missing dependency. At that point, we could start changing the theme’s source code and make our own theme. Instead, we take a step back and make the necessary changes to activate another gem based theme.</p>
+
+<p>Then we add a Gemfile to our repository, which makes sure that our webpage also works, when some dependencies are updated. For this to work we need another gem called bundler, which knows all about the dependencies and generates a Gemfile.lock file, containing all the dependencies and its versions.</p>
+
+<p>The next step is to make our website behave exacty like the starter template you would get, when with the shell command:</p>
+<blockquote>
+  <p>$ jekyll new &lt;relative_path_to/repository_name&gt;</p>
+</blockquote>
+
+<p>And finally we are going to upload the source code in the master branch and publish the compiled website in a new branch called gh-pages on Github.</p>
+
+<h2 id="make-our-first-website-with-jekyll">Make our first website with jekyll</h2>
+<h3 id="1-create-an-empty-folder">1) Create an empty folder</h3>
+<blockquote>
+  <p>$ mkdir relative_path_to/Repository_name</p>
+</blockquote>
+
+<h3 id="2-install-gem">2) Install gem</h3>
+<blockquote>
+  <p>$ gem install ‘jekyll’</p>
+</blockquote>
+
+<h4 id="output">Output:</h4>
+<p>Successfully installed jekyll-3.8.5
+Parsing documentation for jekyll-3.8.5
+Done installing documentation for jekyll after 4 seconds
+1 gem installed</p>
+
+<h3 id="3-check-directory">3) Check directory</h3>
+<blockquote>
+  <p>$ ls</p>
+</blockquote>
+
+<h4 id="output-1">Output:</h4>
+<p>none</p>
+
+<h3 id="4-build-site-and-start-server">4) Build site and start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-2">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: none
+            Source: relative_path_to/Repository_name
+       Destination: relative_path_to/Repository_name/_site
+ Incremental build: disabled. Enable with <span class="nt">--incremental</span>
+      Generating... 
+                    <span class="k">done in </span>0.027 seconds.
+ Auto-regeneration: enabled <span class="k">for</span> <span class="s1">'relative_path_to/Repository_name'</span>
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+      Regenerating: 1 file<span class="o">(</span>s<span class="o">)</span> changed at 2019-01-21 20:08:40
+                    README.md
+                    ...done <span class="k">in </span>0.014883374 seconds.
+</code></pre></div></div>
+
+<h4 id="browser-output">Browser output:</h4>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index of /
+Name	Last modified	Size
+Parent Directory	2019/01/21 20:07	-
+README.md	2019/01/21 20:06	474
+WEBrick/1.4.2 (Ruby/2.6.0/2018-12-25)
+at localhost:4000
+</code></pre></div></div>
+<p>It does not show the folder name _size:  _size folder is the Parent Directory</p>
+
+<h3 id="5-add-readmemd">5) Add README.md</h3>
+<blockquote>
+  <p>$ vim README.md</p>
+</blockquote>
+
+<h3 id="6-check-directory">6) Check directory</h3>
+<blockquote>
+  <p>$ ls</p>
+</blockquote>
+
+<h4 id="output-3">Output:</h4>
+<p>README.md<br />
+_site</p>
+
+<h3 id="7-add-indexhtml-file">7) Add Index.html file</h3>
+<blockquote>
+  <p>$ vim index.html</p>
+</blockquote>
+
+<h4 id="input">Input:</h4>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--  the html tag and head tag can be removed --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<h4 id="browser-output-1">Browser output</h4>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello World!
+</code></pre></div></div>
+<p>It has no theme.</p>
+
+<h2 id="our-first-webpage-with-theme">Our first webpage with theme</h2>
+<h3 id="8-add-_configyml-file-and-theme">8) Add _config.yml file and theme</h3>
+<blockquote>
+  <p>$ vim _config.yml</p>
+</blockquote>
+
+<h4 id="input-1">Input:</h4>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can have multiple themes in your Gemfile,</span>
+<span class="c1"># but only one in _config.yml can be loaded by jekyll</span>
+
+<span class="c1"># whitelisted theme gems work</span>
+<span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-theme-dinky</span>
+<span class="c1">#theme: jekyll-theme-merlot</span>
+<span class="c1">#theme: jekyll-theme-hacker</span>
+
+<span class="c1"># not whitelisted theme gems do not work</span>
+<span class="c1">#theme: hyde  ##does not work</span>
+</code></pre></div></div>
+
+<h3 id="9-stop-and-start-server">9) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-4">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: relative_path_to/Repository_name/_config.yml
+Invalid theme folder: _includes
+            Source: relative_path_to/Repository_name
+       Destination: relative_path_to/Repository_name/_site
+ Incremental build: disabled. Enable with <span class="nt">--incremental</span>
+      Generating... 
+                    <span class="k">done in </span>0.583 seconds.
+ Auto-regeneration: enabled <span class="k">for</span> <span class="s1">'relative_path_to/Repository_name'</span>
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+      Regenerating: 1 file<span class="o">(</span>s<span class="o">)</span> changed at 2019-01-21 20:52:09
+                    index.html
+                    ...done <span class="k">in </span>0.218392727 seconds.
+</code></pre></div></div>
+
+<p>There is a warning saying <em>Invalid theme folder: _includes</em></p>
+
+<h3 id="10-add-front-matter-to-indexhtml">10) Add Front Matter to index.html</h3>
+<blockquote>
+  <p>$ vim index.html</p>
+</blockquote>
+
+<h4 id="input-2">Input:</h4>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: Home
+---
+<span class="c">&lt;!--  no theme will be loaded without the front matter above --&gt;</span>
+
+
+<span class="c">&lt;!--  the html tag and head tag can be removed --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="11-stop-and-start-server">11) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-5">Output:</h4>
+<p>There is still the warning saying <em>Invalid theme folder: _includes</em></p>
+
+<h4 id="browser-output-2">Browser output:</h4>
+<p>no change</p>
+
+<h3 id="12-add--the-default-layout-to-the-front-matter-in-indexhtml">12) Add  the default layout to the Front Matter in index.html</h3>
+<blockquote>
+  <p>$ vim index.html</p>
+</blockquote>
+
+<h4 id="input-3">Input:</h4>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+title: Home
+---
+<span class="c">&lt;!--  no theme will be loaded without the front matter above --&gt;</span>
+
+
+<span class="c">&lt;!--  the html tag and head tag can be removed --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="13-stop-and-start-server">13) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-6">Output:</h4>
+<p>There is still the warning saying <em>Invalid theme folder: _includes</em></p>
+
+<h4 id="browser-output-3">Browser output:</h4>
+<blockquote>
+  <p>ta da!<br />
+<img src="/assets/website.jpg" alt="webpage" /></p>
+</blockquote>
+
+<h2 id="convert-the-gem-based-theme-to-a-regular-theme">Convert the gem based theme to a regular theme</h2>
+<h3 id="14-lets-understand-the-warning">14) Let’s understand the warning</h3>
+<blockquote>
+  <p>$ bundle show dinky</p>
+</blockquote>
+
+<h4 id="output-7">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/benzro/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-dinky-0.1.1
+/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-hacker-0.1.1
+</code></pre></div></div>
+<blockquote>
+  <p>$ ls $(bundle show dinky)</p>
+</blockquote>
+
+<h4 id="output-8">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assets  _layouts  LICENSE  README.md  _sass
+</code></pre></div></div>
+<p>It just means, that the dinky theme has no _includes folder. We could add one and the warning would disappear until the theme is updated. So, we just ignore it and do something else. We convert the gem based theme into a regular theme.</p>
+
+<h3 id="15-copy-the-gem-code-into-your-repository">15) Copy the gem code into your repository</h3>
+
+<p>Let’s open the Filemanager and show the folder of the dinky theme.</p>
+<blockquote>
+  <p>$ xdg-open $(bundle show dinky)</p>
+</blockquote>
+
+<p>We now copy/paste the whole content of the dinky theme into our repostitory</p>
+<blockquote>
+  <p>$ ls</p>
+</blockquote>
+
+<h4 id="output-9">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assets  _config.yml  index.html  _layouts  LICENSE  README.md  _sass  _site  website.jpg
+</code></pre></div></div>
+
+<h3 id="16-comment-the-theme">16) Comment the theme</h3>
+<blockquote>
+  <p>$ vim _config.yml</p>
+</blockquote>
+
+<h4 id="input-4">Input:</h4>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can have multiple themes in your Gemfile,</span>
+<span class="c1"># but only one in _config.yml can be loaded by jekyll</span>
+
+<span class="c1"># some whitelisted theme gems </span>
+<span class="c1">#theme: minima</span>
+<span class="c1">#theme: jekyll-theme-dinky</span>
+<span class="c1">#theme: jekyll-theme-merlot</span>
+<span class="c1">#theme: jekyll-theme-hacker</span>
+</code></pre></div></div>
+
+<h3 id="17-stop-and-start-server">17) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-10">Output:</h4>
+<p>We get the following error: <br />
+Liquid Exception: Liquid syntax error (line 7): Unknown tag ‘seo’ in /_layouts/default.html</p>
+
+<p>This is, what we should expect, when integrating the gem source into our repository. If the theme was hosted at RubyGems.org, we would have a  .gemspec showing the gems/plugins the theme depends on. But the source we copied didn’t have a .gemspec file, so we can assume for the whitelisted GitHub themes, some magic is going on behind the scenes.</p>
+
+<p>Let’s take a look at the source code at line 7</p>
+<blockquote>
+  <p><!-- Begin Jekyll SEO tag v2.5.0 --></p>
+</blockquote>
+<title>Welcome to Jekyll’s step by step tutorial! | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+
+<meta property="og:title" content="Welcome to Jekyll’s step by step tutorial!" />
+
+<meta property="og:locale" content="en_US" />
+
+<meta name="description" content="Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github." />
+
+<meta property="og:description" content="Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github." />
+
+<link rel="canonical" href="http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" />
+
+<meta property="og:url" content="http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" />
+
+<meta property="og:site_name" content="Your awesome title" />
+
+<meta property="og:type" content="article" />
+
+<meta property="article:published_time" content="2019-01-22T03:56:34+01:00" />
+
+<script type="application/ld+json">
+{"description":"Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html"},"@type":"BlogPosting","url":"http://localhost:4000/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html","headline":"Welcome to Jekyll’s step by step tutorial!","dateModified":"2019-01-22T03:56:34+01:00","datePublished":"2019-01-22T03:56:34+01:00","@context":"http://schema.org"}</script>
+
+<!-- End Jekyll SEO tag -->
+
+<h3 id="18-add-the-missing-plugin">18) Add the missing plugin</h3>
+<p>We are obviously missing a gem, which jekyll calls plugin. So, lets add the jekyll-seo-tag plugin.</p>
+<blockquote>
+  <p>$ vim _config.yml</p>
+</blockquote>
+
+<h4 id="input-5">Input:</h4>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can have multiple themes in your Gemfile,</span>
+<span class="c1"># but only one in _config.yml can be loaded by jekyll</span>
+
+<span class="c1"># some whitelisted theme gems </span>
+<span class="c1">#theme: minima</span>
+<span class="c1">#theme: jekyll-theme-dinky</span>
+<span class="c1">#theme: jekyll-theme-merlot</span>
+<span class="c1">#theme: jekyll-theme-hacker</span>
+
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+</code></pre></div></div>
+<h3 id="19-stop-and-start-server">19) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-11">Output:</h4>
+<p>The warning <em>Invalid theme folder: _includes</em> also magically disappeared even though, our theme still doesn’t have an _includes folder.</p>
+
+<h4 id="browser-output-4">Browser output:</h4>
+<blockquote>
+  <p>and boom, we are back again!<br />
+<img src="/assets/website.jpg" alt="webpage" /></p>
+</blockquote>
+
+<h3 id="20-lets-try-and-activate-the-merlot-theme">20) Let’s try and activate the merlot-theme</h3>
+<blockquote>
+  <p>$ vim _config.yml</p>
+</blockquote>
+
+<h4 id="input-6">Input:</h4>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can have multiple themes in your Gemfile,</span>
+<span class="c1"># but only one in _config.yml can be loaded by jekyll</span>
+
+<span class="c1"># some whitelisted theme gems </span>
+<span class="c1">#theme: minima</span>
+<span class="c1">#theme: jekyll-theme-dinky</span>
+<span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-theme-merlot</span>
+<span class="c1">#theme: jekyll-theme-hacker</span>
+</code></pre></div></div>
+
+<h3 id="21-stop-and-start-server">21) Stop and Start server</h3>
+<blockquote>
+  <p>$ jekyll serve</p>
+</blockquote>
+
+<h4 id="output-12">Output:</h4>
+<p>And the warning saying <em>Invalid theme folder: _includes</em> is back again. But the browser is still showing the dinky theme.</p>
+
+<p>This is an important lesson, because it shows how jekyll works. It goes to the Merlot theme gem, complains about the missing _includes folder, and starts loading the theme files, which are not present in our repository. But because we have the dinky source in our repository, and which follows the same naming convention, dinky theme remains active. And this is also the reason, why some smart people came up with gem based themes.</p>
+
+<h3 id="22-rename-the-folders">22) Rename the folders</h3>
+<h4 id="input-7">Input:</h4>
+<p>Let’s rename the theme folders. I just added an underscore at the end of the three theme folders.</p>
+
+<h4 id="output-13">Output:</h4>
+<p>The server starts complaining after the first renaming, but after all three folders have been renamed and the browser is refreshed, it shows the new theme.</p>
+
+<h4 id="browser-output-5">Browser output:</h4>
+<blockquote>
+  <p>howdy, merlot!<br />
+<img src="/assets/website2.jpg" alt="webpage22" /></p>
+</blockquote>
+
+<blockquote>
+  <p>$ ls</p>
+</blockquote>
+
+<h4 id="output-14">Output:</h4>
+<p>assets_  <em>config.yml  index.html  _layouts</em>  LICENSE  README.md  <em>sass</em>  _site  website.jpg</p>
+
+<h2 id="lock-the-dependencies">Lock the dependencies</h2>
+<h3 id="23-add-a-gemfile-file">23) Add a Gemfile file</h3>
+<blockquote>
+  <p>$ vim Gemfile</p>
+</blockquote>
+
+<h4 id="input-8">Input:</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source 'https://rubygems.org'
+gem 'jekyll'
+</code></pre></div></div>
+<p>This is similar to what we did in step 2), but now we let bundler lock the dependencies.</p>
+
+<h3 id="24-install-bundler">24) Install bundler</h3>
+<blockquote>
+  <p>$ gem install ‘bundler’</p>
+</blockquote>
+
+<h3 id="25-install-gems-and-generate-gemfilelock-file">25) Install gems and generate Gemfile.lock file</h3>
+<blockquote>
+  <p>$ bundle install</p>
+</blockquote>
+
+<p>output: 
+Fetching gem metadata from https://rubygems.org/…………                                                                         <br />
+Fetching gem metadata from https://rubygems.org/..                                                                                   <br />
+Resolving dependencies…                                                                                                            <br />
+Using public_suffix 3.0.3                                                                                                            <br />
+Using addressable 2.6.0                                                                                                              <br />
+Using bundler 2.0.1                                                                                                                  <br />
+Using colorator 1.1.0                                                                                                                <br />
+Using concurrent-ruby 1.1.4                                                                                                          <br />
+Using eventmachine 1.2.7                                                                                                             <br />
+Using http_parser.rb 0.6.0                                                                                                           <br />
+Using em-websocket 0.5.1                                                                                                             <br />
+Using ffi 1.10.0                                                                                                                     <br />
+Using forwardable-extended 2.6.0                                                                                                     <br />
+Using i18n 0.9.5                                                                                                                     <br />
+Using rb-fsevent 0.10.3                                                                                                              <br />
+Using rb-inotify 0.10.0                                                                                                              <br />
+Using sass-listen 4.0.0                                                                                                              <br />
+Using sass 3.7.3                                                                                                                     <br />
+Using jekyll-sass-converter 1.5.2                                                                                                    <br />
+Using ruby_dep 1.5.0                                                                                                                 <br />
+Using listen 3.1.5                                                                                                                   <br />
+Using jekyll-watch 2.1.2                                                                                                             <br />
+Using kramdown 1.17.0                                                                                                                <br />
+Using liquid 4.0.1                                                                                                                   <br />
+Using mercenary 0.3.6                                                                                                                <br />
+Using pathutil 0.16.2
+Using rouge 3.3.0
+Using safe_yaml 1.0.4
+Using jekyll 3.8.5
+Bundle complete! 1 Gemfile dependency, 26 gems now installed.
+Use <code class="highlighter-rouge">bundle info [gemname]</code> to see where a bundled gem is installed.</p>
+
+<h3 id="26-check-directory">26) Check directory</h3>
+<blockquote>
+  <p>$ ls</p>
+</blockquote>
+
+<p>output:
+assets_  <em>config.yml  Gemfile  Gemfile.lock  index.html  _layouts</em>  LICENSE  README.md  <em>sass</em>  _site</p>
+
+<h2 id="turn-the-website-into-the-default-website">Turn the website into the default website</h2>
+<p>We make now a new website and add the content of this README.md file to a new post.</p>
+
+<h3 id="27-new-website">27) New website</h3>
+<blockquote>
+  <p>$ mkdir relative_path_to/repository_name
+$ jekyll new .</p>
+</blockquote>
+
+<h4 id="output-15">Output:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running bundle <span class="nb">install </span><span class="k">in </span>relative_path_to repository_name...                                                                                                              
+  Bundler: The dependency tzinfo-data <span class="o">(&gt;=</span> 0<span class="o">)</span> will be unused by any of the platforms Bundler is installing <span class="k">for</span><span class="nb">.</span> Bundler is installing <span class="k">for </span>ruby but the dependency is only <span class="k">for </span>x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run <span class="sb">`</span>bundle lo
+ck <span class="nt">--add-platform</span> x86-mingw32 x86-mswin32 x64-mingw32 java<span class="sb">`</span><span class="nb">.</span>                                                                           
+  Bundler: Fetching gem metadata from https://rubygems.org/...........                                                                 
+  Bundler: Fetching gem metadata from https://rubygems.org/.                                                                           
+  Bundler: Resolving dependencies....                                                                                                  
+  Bundler: Using public_suffix 3.0.3                                                                                                   
+  Bundler: Using addressable 2.6.0                                                                                                     
+  Bundler: Using bundler 1.17.2                                                                                                        
+  Bundler: Using colorator 1.1.0                                                                                                       
+  Bundler: Using concurrent-ruby 1.1.4                                                                                                 
+  Bundler: Using eventmachine 1.2.7                                                                                                    
+  Bundler: Using http_parser.rb 0.6.0                                                                                                  
+  Bundler: Using em-websocket 0.5.1                                                                                                    
+  Bundler: Using ffi 1.10.0
+  Bundler: Using forwardable-extended 2.6.0
+  Bundler: Using i18n 0.9.5
+  Bundler: Using rb-fsevent 0.10.3
+  Bundler: Using rb-inotify 0.10.0
+  Bundler: Using sass-listen 4.0.0
+  Bundler: Using sass 3.7.3
+  Bundler: Using jekyll-sass-converter 1.5.2
+  Bundler: Using ruby_dep 1.5.0
+  Bundler: Using listen 3.1.5
+  Bundler: Using jekyll-watch 2.1.2
+  Bundler: Using kramdown 1.17.0
+  Bundler: Using liquid 4.0.1
+  Bundler: Using mercenary 0.3.6
+  Bundler: Using pathutil 0.16.2
+  Bundler: Using rouge 3.3.0
+  Bundler: Using safe_yaml 1.0.4
+  Bundler: Using jekyll 3.8.5
+  Bundler: Using jekyll-feed 0.11.0
+  Bundler: Using jekyll-seo-tag 2.5.0
+  Bundler: Using minima 2.5.0
+  Bundler: Bundle <span class="nb">complete</span><span class="o">!</span> 4 Gemfile dependencies, 29 gems now installed.
+  Bundler: Use <span class="sb">`</span>bundle info <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+New jekyll site installed <span class="k">in </span>relative_path_to/repository_name.
+</code></pre></div></div>
+
+<h3 id="28-copypaste-this-readmemd-into-a-new-post">28) Copy/paste this README.md into a new post</h3>
+<p>First we copy it into the root of the new repository, or just copy/paste it with a file manager.</p>
+<blockquote>
+  <p>cp relative_path_to_old_repo/README.md  relative_path_to_/repository_name/README.md</p>
+</blockquote>
+
+<p>Then we copy/paste it again but this time into the _posts folder.</p>
+<blockquote>
+  <p>cp relative_path_to_old_repo/README.md  relative_path_to/repository_name/_posts/README.md</p>
+</blockquote>
+
+<p>And rename the file according to the naming converntion for posts. <YYYY-MM-DD-Name.md></YYYY-MM-DD-Name.md></p>
+<blockquote>
+  <p>mv path_to_new_repo/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md</p>
+</blockquote>
+
+<h3 id="29-add-front-matter-to-the-post">29) Add Front Matter to the post</h3>
+<blockquote>
+  <p>$ vim relative path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md</p>
+</blockquote>
+
+<h4 id="input-9">Input:</h4>
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">Welcome</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Jekyll's</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">step</span><span class="nv"> </span><span class="s">tutorial!"</span>
+<span class="na">date</span><span class="pi">:</span>   <span class="s">2019-01-22 03:56:34 +0100</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="s">jekyll tutorial</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h3 id="30-copypaste-images">30) Copy/paste images</h3>
+<blockquote>
+  <p>cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md
+cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md</p>
+</blockquote>
+
+<p>The path to the images in both the README and the post should be:
+/assets/website.md
+/assets/website2.md</p>
+
+<h2 id="deployment">Deployment</h2>
+<h3 id="31-initialize-git-in-your-repository-root">31) Initialize git in your repository root</h3>
+<blockquote>
+  <p>$ cd relative_path_to/repository_name
+$ git init</p>
+</blockquote>
+
+<h3 id="32-adapt-the-gitignore-file">32) Adapt the .gitignore file</h3>
+<p>We do not want our  _site folder in our master branch, that’s why the .gitignore file has following entry.</p>
+<blockquote>
+  <p>$ vim .gitignore</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_site/
+</code></pre></div></div>
+
+<h3 id="33-adapt-the-_configyml-file">33) Adapt the _config.yml file</h3>
+<p>baseurl: “” # the subpath of your site, e.g. /blog
+url: “<my_account>.github.io/<repository_name>" # the base hostname &amp; protocol for your site, e.g. http:/</repository_name></my_account></p>
+
+<h3 id="34-build-the-site">34) Build the site</h3>
+<p>With the Gemfile and bundler we need to adapt our build and serve commands</p>
+<blockquote>
+  <p>$ bundle exec jekyll serve</p>
+</blockquote>
+
+<h3 id="35-move-compiled-code-to-new-branch">35) Move compiled code to new branch</h3>
+<blockquote>
+  <p>git branch gh-pages
+git checkout gh-pages _site</p>
+</blockquote>
+
+<h3 id="36-open-account-and-repository">36) Open account and repository</h3>
+<p>Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. You can make a branch gh-pages which contains only the _site folder. With a user page the source code works fine.</p>
+
+<h4 id="account-name">Account name:</h4>
+<blockquote>
+  <my_account>  
+</my_account>
+</blockquote>
+
+<h4 id="repository-name-for-a-user-page">Repository name for a user page</h4>
+<blockquote>
+  <my_account>.github.io  
+</my_account>
+</blockquote>
+
+<h4 id="repository-name-for-a-project-page">Repository name for a project page</h4>
+<blockquote>
+  <project_name>
+</project_name>
+</blockquote>
+
+<h4 id="website-url">Website URL</h4>
+<p>user page: https://<my_account>.github.io  
+project page: https://<my_account>.github.io/<project_name></project_name></my_account></my_account></p>
+
+<h4 id="settings">Settings</h4>
+<p>In your repostitory on Github go to settings tab, scroll down to GitHub Pages section and choose your branch (master, master/docs or gh-pages).</p>
+
+<h3 id="37-add-commit-and-push-both-branches-of-your-website-to-github">37) Add, commit and push both branches of your website to GitHub.</h3>
+<blockquote>
+  <p>$ git add .
+$ git commit -m “message text”
+$ git push</p>
+</blockquote>
+
+  </div><a class="u-url" href="/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Your awesome title</li><li><a class="u-email" href="mailto:your-email@example.com">your-email@example.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jekyll"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jekyll</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
