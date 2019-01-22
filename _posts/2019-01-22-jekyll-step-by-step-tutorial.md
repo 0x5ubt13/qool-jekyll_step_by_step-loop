@@ -5,7 +5,6 @@ date:   2019-01-22 03:56:34 +0100
 categories: jekyll tutorial
 ---
 
-
 # Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.
 
 ## Learning objectives
@@ -21,6 +20,9 @@ The next step is to make our website behave exacty like the starter template you
 > $ jekyll new <relative_path_to/repository_name>
 
 And finally we are going to upload the source code in the master branch and publish the compiled website in a new branch called gh-pages on Github.
+
+The result can be accessed with following URL:
+https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html
 
 ## Make our first website with jekyll
 ### 1) Create an empty folder
@@ -468,8 +470,15 @@ _site/
 ```
 
 ### 33) Adapt the _config.yml file
+Do not believe the comments in the site template, if you are hosting on Github. You may also change here to another whitelisted theme, which is more appealing to you. 
+
+#### For a user page
+baseurl: "<project_name>" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http:/
+
+#### For a project page
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "<my_account>.github.io/<repository_name>" # the base hostname & protocol for your site, e.g. http:/
+url: "" # the base hostname & protocol for your site, e.g. http:/
 
 ### 34) Build the site and commit
 With the Gemfile and bundler we need to adapt our build and serve commands
@@ -487,30 +496,34 @@ With the Gemfile and bundler we need to adapt our build and serve commands
 #### Remove all files for this branch
 > $ git rm -rf .
 
-#### Retrieve .gitignore and activate _size
+#### Retrieve .gitignore and activate _site folder
 > $ git checkout master -- .gitignore
 > vim .gitignore
 
 #### Input
-remove _size from file
+remove _site from .gitignore file
 ```bash
 .sass-cache
 .jekyll-metadata
 ```
+#### _site folder contents
+Move the content of _site folder to root, i.e. where the _size folder is and delete it. The index.html file must be visible there otherwise it is not going to work. You can take the your file manager or use `mv` or `git mv` command.
 
 #### commit changes
-> $ git commit -m "_site"
+> $ git commit -m " content of _site folder and .gitignore"
 
 ### 36) Open account and repository
-Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn't work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. You can make a branch gh-pages which contains only the _site folder. With a user page the source code works fine. 
+Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn't work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file. Or you can make a user page, with a user page the source code works fine. 
 
 #### Account name:  
 > <my_account>  
 
 #### Repository name for a user page
+This is a special repository. You can only have one user page per user account, with exactly the following naming condition.
 > <my_account>.github.io  
 
 #### Repository name for a project page
+If there would not be a user page repository, this would probably be called repository page, instead of project page.
 > <project_name>
 
 #### Website URL
@@ -525,3 +538,6 @@ In your repostitory on Github go to settings tab, scroll down to GitHub Pages se
 > $ git push
 > $ git checkout gh-pages
 > $ git push --set-upstream origin gh-pages
+
+----
+qoolixiloop, 22. Jan. 2019
