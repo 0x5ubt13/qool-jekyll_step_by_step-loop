@@ -627,6 +627,64 @@ If the output is not master, checkout to master branch.
 
 Make your changes to the source code.  
 
+#### Change theme
+When changing from minima to  one of the whitelisted GitHub themes some steps have to be taken. I am going to take the jekyll-theme-hacker.
+
+##### i) Change config.yml and replace minima with  hacker theme   
+theme: jekyll-theme-hacker  
+
+If you now try to build you get an error.  
+
+> $ bundle update        
+
+> $ bundle exec jekyll build     
+ 
+```
+jekyll 3.8.5 | Error:  The jekyll-theme-hacker theme could not be found.
+```
+
+##### ii) Change the Gemfile file   
+The search engine finds for you the following link:  
+https://rubygems.org/gems/jekyll-theme-hacker/versions/0.1.0
+
+Copy the line for the Gemfile and add it to the Gemfile file  
+```
+gem 'jekyll-theme-hacker', '~> 0.1.0'
+```
+
+If you now try to build you get another error.  
+
+> $ bundle update        
+
+> $ bundle exec jekyll build      
+   
+```
+Build Warning: Layout 'page' requested in about.md does not exist.
+Build Warning: Layout 'home' requested in index.md does not exist.
+```
+Obviously jekyll's site template has two additional layout files for posts and about pages. Instead of changing our content, we just add the two layout files and make a redirect to existing layout files in the hacker theme. 
+
+##### iii) Add folder _layouts and two files posts.html and pages.html in it.  
+
+```
+# home.html
+---
+layout: default
+---
+{{ content }}
+```
+```
+# page.html
+---
+layout: default
+---
+{{ content }}
+```
+
+Now also the rebuild should work.          
+
+> $ bundle exec jekyll build   
+
 ### 39) Build the site and commit
 > $ bundle exec jekyll build  
 
