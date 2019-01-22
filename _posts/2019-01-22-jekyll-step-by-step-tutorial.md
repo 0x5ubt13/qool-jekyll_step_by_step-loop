@@ -5,6 +5,7 @@ date:   2019-01-22 03:56:34 +0100
 categories: jekyll tutorial
 ---
 
+
 # Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.
 
 ## Learning objectives
@@ -486,8 +487,16 @@ With the Gemfile and bundler we need to adapt our build and serve commands
 #### Remove all files for this branch
 > $ git rm -rf .
 
-#### Retrieve _site folder
-> $ git checkout master -- _site
+#### Retrieve .gitignore and activate _size
+> $ git checkout master -- .gitignore
+> vim .gitignore
+
+#### Input
+remove _size from file
+```bash
+.sass-cache
+.jekyll-metadata
+```
 
 #### commit changes
 > $ git commit -m "_site"
@@ -515,4 +524,4 @@ In your repostitory on Github go to settings tab, scroll down to GitHub Pages se
 > $ git checkout master
 > $ git push
 > $ git checkout gh-pages
-> $ git push
+> $ git push --set-upstream origin gh-pages
