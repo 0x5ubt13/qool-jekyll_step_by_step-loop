@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/" rel="alternate" type="text/html" /><updated>2019-01-22T08:18:25+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll’s step by step tutorial!</title><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" rel="alternate" type="text/html" title="Welcome to Jekyll's step by step tutorial!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial</id><content type="html" xml:base="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">&lt;h1 id=&quot;step-by-step-jekyll-tutorial-installation-without-bundler-adding-a-page-adding-a-gem-based-theme-converting-the-gem-based-theme-to-a-regular-theme-go-back-to-a-gem-based-theme-add-a-gemfile-for-the-bundler-and-publish-it-on-github&quot;&gt;Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/" rel="alternate" type="text/html" /><updated>2019-01-22T16:16:37+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll’s step by step tutorial!</title><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" rel="alternate" type="text/html" title="Welcome to Jekyll's step by step tutorial!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial</id><content type="html" xml:base="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">&lt;h1 id=&quot;step-by-step-jekyll-tutorial-installation-without-bundler-adding-a-page-adding-a-gem-based-theme-converting-the-gem-based-theme-to-a-regular-theme-go-back-to-a-gem-based-theme-add-a-gemfile-for-the-bundler-and-publish-it-on-github&quot;&gt;Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.&lt;/h1&gt;
 
 &lt;h2 id=&quot;learning-objectives&quot;&gt;Learning objectives&lt;/h2&gt;
 &lt;p&gt;Throughout each of the following steps you will be confronted with error messages and learn, what’s going on behind the scenes and see how easy it then becomes to make it all work.&lt;/p&gt;
@@ -15,6 +15,9 @@
 &lt;/blockquote&gt;
 
 &lt;p&gt;And finally we are going to upload the source code in the master branch and publish the compiled website in a new branch called gh-pages on Github.&lt;/p&gt;
+
+&lt;p&gt;The result can be accessed with following URL:
+https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&lt;/p&gt;
 
 &lt;h2 id=&quot;make-our-first-website-with-jekyll&quot;&gt;Make our first website with jekyll&lt;/h2&gt;
 &lt;h3 id=&quot;1-create-an-empty-folder&quot;&gt;1) Create an empty folder&lt;/h3&gt;
@@ -549,8 +552,15 @@ $ git init&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;33-adapt-the-_configyml-file&quot;&gt;33) Adapt the _config.yml file&lt;/h3&gt;
+&lt;p&gt;Do not believe the comments in the site template, if you are hosting on Github. You may also change here to another whitelisted theme, which is more appealing to you.&lt;/p&gt;
+
+&lt;h4 id=&quot;for-a-user-page&quot;&gt;For a user page&lt;/h4&gt;
+&lt;p&gt;baseurl: “&lt;project_name&gt;&quot; # the subpath of your site, e.g. /blog
+url: &quot;&quot; # the base hostname &amp;amp; protocol for your site, e.g. http:/&lt;/project_name&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;for-a-project-page&quot;&gt;For a project page&lt;/h4&gt;
 &lt;p&gt;baseurl: “” # the subpath of your site, e.g. /blog
-url: “&lt;my_account&gt;.github.io/&lt;repository_name&gt;&quot; # the base hostname &amp;amp; protocol for your site, e.g. http:/&lt;/repository_name&gt;&lt;/my_account&gt;&lt;/p&gt;
+url: “” # the base hostname &amp;amp; protocol for your site, e.g. http:/&lt;/p&gt;
 
 &lt;h3 id=&quot;34-build-the-site-and-commit&quot;&gt;34) Build the site and commit&lt;/h3&gt;
 &lt;p&gt;With the Gemfile and bundler we need to adapt our build and serve commands&lt;/p&gt;
@@ -576,25 +586,27 @@ $ git commit -m “source code”&lt;/p&gt;
   &lt;p&gt;$ git rm -rf .&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;retrieve-gitignore-and-activate-_size&quot;&gt;Retrieve .gitignore and activate _size&lt;/h4&gt;
+&lt;h4 id=&quot;retrieve-gitignore-and-activate-_site-folder&quot;&gt;Retrieve .gitignore and activate _site folder&lt;/h4&gt;
 &lt;blockquote&gt;
   &lt;p&gt;$ git checkout master – .gitignore
 vim .gitignore&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;input-10&quot;&gt;Input&lt;/h4&gt;
-&lt;p&gt;remove _size from file&lt;/p&gt;
+&lt;p&gt;remove _site from .gitignore file&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.sass-cache
 .jekyll-metadata
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;_site-folder-contents&quot;&gt;_site folder contents&lt;/h4&gt;
+&lt;p&gt;Move the content of _site folder to root, i.e. where the _size folder is and delete it. The index.html file must be visible there otherwise it is not going to work. You can take the your file manager or use &lt;code class=&quot;highlighter-rouge&quot;&gt;mv&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git mv&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;h4 id=&quot;commit-changes&quot;&gt;commit changes&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;$ git commit -m “_site”&lt;/p&gt;
+  &lt;p&gt;$ git commit -m “ content of _site folder and .gitignore”&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;36-open-account-and-repository&quot;&gt;36) Open account and repository&lt;/h3&gt;
-&lt;p&gt;Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. You can make a branch gh-pages which contains only the _site folder. With a user page the source code works fine.&lt;/p&gt;
+&lt;p&gt;Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file. Or you can make a user page, with a user page the source code works fine.&lt;/p&gt;
 
 &lt;h4 id=&quot;account-name&quot;&gt;Account name:&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -603,12 +615,14 @@ vim .gitignore&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;repository-name-for-a-user-page&quot;&gt;Repository name for a user page&lt;/h4&gt;
+&lt;p&gt;This is a special repository. You can only have one user page per user account, with exactly the following naming condition.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;my_account&gt;.github.io  
 &lt;/my_account&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;repository-name-for-a-project-page&quot;&gt;Repository name for a project page&lt;/h4&gt;
+&lt;p&gt;If there would not be a user page repository, this would probably be called repository page, instead of project page.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;project_name&gt;
 &lt;/project_name&gt;
@@ -627,7 +641,10 @@ project page: https://&lt;my_account&gt;.github.io/&lt;project_name&gt;&lt;/proj
 $ git push
 $ git checkout gh-pages
 $ git push –set-upstream origin gh-pages&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><summary type="html">Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;qoolixiloop, 22. Jan. 2019&lt;/p&gt;</content><author><name></name></author><summary type="html">Step by step Jekyll tutorial: installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish it on Github.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 

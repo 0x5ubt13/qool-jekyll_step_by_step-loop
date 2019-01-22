@@ -63,6 +63,9 @@
 
 <p>And finally we are going to upload the source code in the master branch and publish the compiled website in a new branch called gh-pages on Github.</p>
 
+<p>The result can be accessed with following URL:
+https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html</p>
+
 <h2 id="make-our-first-website-with-jekyll">Make our first website with jekyll</h2>
 <h3 id="1-create-an-empty-folder">1) Create an empty folder</h3>
 <blockquote>
@@ -596,8 +599,15 @@ $ git init</p>
 </code></pre></div></div>
 
 <h3 id="33-adapt-the-_configyml-file">33) Adapt the _config.yml file</h3>
+<p>Do not believe the comments in the site template, if you are hosting on Github. You may also change here to another whitelisted theme, which is more appealing to you.</p>
+
+<h4 id="for-a-user-page">For a user page</h4>
+<p>baseurl: “<project_name>" # the subpath of your site, e.g. /blog
+url: "" # the base hostname &amp; protocol for your site, e.g. http:/</project_name></p>
+
+<h4 id="for-a-project-page">For a project page</h4>
 <p>baseurl: “” # the subpath of your site, e.g. /blog
-url: “<my_account>.github.io/<repository_name>" # the base hostname &amp; protocol for your site, e.g. http:/</repository_name></my_account></p>
+url: “” # the base hostname &amp; protocol for your site, e.g. http:/</p>
 
 <h3 id="34-build-the-site-and-commit">34) Build the site and commit</h3>
 <p>With the Gemfile and bundler we need to adapt our build and serve commands</p>
@@ -623,25 +633,27 @@ $ git commit -m “source code”</p>
   <p>$ git rm -rf .</p>
 </blockquote>
 
-<h4 id="retrieve-gitignore-and-activate-_size">Retrieve .gitignore and activate _size</h4>
+<h4 id="retrieve-gitignore-and-activate-_site-folder">Retrieve .gitignore and activate _site folder</h4>
 <blockquote>
   <p>$ git checkout master – .gitignore
 vim .gitignore</p>
 </blockquote>
 
 <h4 id="input-10">Input</h4>
-<p>remove _size from file</p>
+<p>remove _site from .gitignore file</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.sass-cache
 .jekyll-metadata
 </code></pre></div></div>
+<h4 id="_site-folder-contents">_site folder contents</h4>
+<p>Move the content of _site folder to root, i.e. where the _size folder is and delete it. The index.html file must be visible there otherwise it is not going to work. You can take the your file manager or use <code class="highlighter-rouge">mv</code> or <code class="highlighter-rouge">git mv</code> command.</p>
 
 <h4 id="commit-changes">commit changes</h4>
 <blockquote>
-  <p>$ git commit -m “_site”</p>
+  <p>$ git commit -m “ content of _site folder and .gitignore”</p>
 </blockquote>
 
 <h3 id="36-open-account-and-repository">36) Open account and repository</h3>
-<p>Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. You can make a branch gh-pages which contains only the _site folder. With a user page the source code works fine.</p>
+<p>Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file. Or you can make a user page, with a user page the source code works fine.</p>
 
 <h4 id="account-name">Account name:</h4>
 <blockquote>
@@ -650,12 +662,14 @@ vim .gitignore</p>
 </blockquote>
 
 <h4 id="repository-name-for-a-user-page">Repository name for a user page</h4>
+<p>This is a special repository. You can only have one user page per user account, with exactly the following naming condition.</p>
 <blockquote>
   <my_account>.github.io  
 </my_account>
 </blockquote>
 
 <h4 id="repository-name-for-a-project-page">Repository name for a project page</h4>
+<p>If there would not be a user page repository, this would probably be called repository page, instead of project page.</p>
 <blockquote>
   <project_name>
 </project_name>
@@ -675,6 +689,9 @@ $ git push
 $ git checkout gh-pages
 $ git push –set-upstream origin gh-pages</p>
 </blockquote>
+
+<hr />
+<p>qoolixiloop, 22. Jan. 2019</p>
 
   </div><a class="u-url" href="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" hidden></a>
 </article>
