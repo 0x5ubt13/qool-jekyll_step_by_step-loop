@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/qool-jekyll_step_by_step-loop/README.html</loc>
+<lastmod>2019-01-25T22:54:31+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/qool-jekyll_step_by_step-loop/about/</loc>
+<lastmod>2019-01-25T22:54:31+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/qool-jekyll_step_by_step-loop/</loc>
+<lastmod>2019-01-25T22:54:31+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html</loc>
+<lastmod>2019-01-25T22:54:31+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html</loc>
+<lastmod>2019-01-25T22:54:31+01:00</lastmod>
+</url>
+</urlset>
