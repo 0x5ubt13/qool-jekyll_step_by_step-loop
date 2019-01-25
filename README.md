@@ -205,8 +205,7 @@ There is still the warning saying *Invalid theme folder: _includes*
 
 #### Browser output:
 > ta da!  
-![webpage](/assets/website.jpg)
-![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
+![webpage](/{{ site.baseurl }}/assets/img/website.jpg)
 
 ## Let's convert the gem based theme to a regular theme
 ### 14) Understand the warning about _includes
@@ -297,8 +296,7 @@ The warning *Invalid theme folder: _includes* also magically disappeared even th
 
 #### Browser output:
 > and boom, we are back again!  
-![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
-![webpage](/assets/website.jpg)
+![webpage](/{{ site.baseurl }}/assets/img/website.jpg)
 
 ### 20) Let's try and activate the merlot-theme
 We now uncomment the line telling jekyll to load the merlot theme.  
@@ -334,8 +332,7 @@ The server starts complaining after the first renaming, but after all three fold
 
 #### Browser output:
 > howdy, merlot!  
-![webpage](/qool-jekyll_step_by_step-loop/assets/website2.jpg)
-![webpage](/assets/website2.jpg)
+![webpage](/{{ site.baseurl }}/assets/img/website2.jpg)
   
 You should now have the following folder structure.  
 > $ ls
