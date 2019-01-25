@@ -17,8 +17,9 @@ You can find the source code for Jekyll at GitHub:
 
 [jekyll-organization]: https://github.com/jekyll
 
+<br>
 
 {% assign i = site.data.navigation | where:'name','About'| first %}  
-i: {{ i.link }} {{i | shift}}  
+site.data.navigation[1].link: {{ i.link }} {{i | shift}}  
 permalink: {{ site.data.navigation[1].link }}  
 

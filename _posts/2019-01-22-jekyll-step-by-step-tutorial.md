@@ -203,8 +203,7 @@ There is still the warning saying *Invalid theme folder: _includes*
 
 #### Browser output:
 > ta da!  
-![webpage](/assets/website.jpg)
-![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
+![webpage]({{site.baseurl}}/assets/img/website.jpg)
 
 ## Let's convert the gem based theme to a regular theme
 ### 14) Understand the warning about _includes
@@ -295,8 +294,7 @@ The warning *Invalid theme folder: _includes* also magically disappeared even th
 
 #### Browser output:
 > and boom, we are back again!  
-![webpage](/qool-jekyll_step_by_step-loop/assets/website.jpg)
-![webpage](/assets/website.jpg)
+![webpage]({{site.baseurl}}/assets/img/website.jpg)
 
 ### 20) Let's try and activate the merlot-theme
 We now uncomment the line telling jekyll to load the merlot theme.  
@@ -332,8 +330,7 @@ The server starts complaining after the first renaming, but after all three fold
 
 #### Browser output:
 > howdy, merlot!  
-![webpage](/qool-jekyll_step_by_step-loop/assets/website2.jpg)
-![webpage](/assets/website2.jpg)
+![webpage]({{site.baseurl}}/assets/img/website2.jpg)
   
 You should now have the following folder structure.  
 > $ ls
@@ -512,15 +509,15 @@ _site/
 You may change here to another whitelisted theme, which is more appealing to you.  
 > $ vim _config.yml  
 
-> Important: Do not believe the comments in the site template regarding the URLs, if you are hosting on Github. 
+> Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. That way your source on localhost behaves the same way as on Github's user or project pages, with souce code or with compiled code. 
 
 #### For a user page with compiled code
-baseurl: "<project_name>" # the subpath of your site, e.g. /blog  
+baseurl: "" # the subpath of your site, e.g. /blog  
 
 url: "" # the base hostname & protocol for your site, e.g. http:/
 
 #### For a project page
-baseurl: "" # the subpath of your site, e.g. /blog  
+baseurl: "/repository name" # the subpath of your site, e.g. /blog  
 
 url: "" # the base hostname & protocol for your site, e.g. http:/
 

@@ -511,15 +511,15 @@ _site/
 You may change here to another whitelisted theme, which is more appealing to you.  
 > $ vim _config.yml  
 
-> Important: Do not believe the comments in the site template regarding the URLs, if you are hosting on Github. 
+> Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. That way your source on localhost behaves the same way as on Github's user or project pages, with souce code or with compiled code. 
 
 #### For a user page with compiled code
-baseurl: "<project_name>" # the subpath of your site, e.g. /blog  
+baseurl: "" # the subpath of your site, e.g. /blog  
 
 url: "" # the base hostname & protocol for your site, e.g. http:/
 
 #### For a project page
-baseurl: "" # the subpath of your site, e.g. /blog  
+baseurl: "/repository name" # the subpath of your site, e.g. /blog  
 
 url: "" # the base hostname & protocol for your site, e.g. http:/
 
