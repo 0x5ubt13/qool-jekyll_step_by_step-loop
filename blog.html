@@ -1,18 +1,126 @@
----
-layout: post
-title: Blog
----
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/qool-jekyll_step_by_step-loop/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Blog | Another Jekyll step by step tutorial</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github." />
+<meta property="og:description" content="Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github." />
+<link rel="canonical" href="/qool-jekyll_step_by_step-loop/blog.html" />
+<meta property="og:url" content="/qool-jekyll_step_by_step-loop/blog.html" />
+<meta property="og:site_name" content="Another Jekyll step by step tutorial" />
+<script type="application/ld+json">
+{"headline":"Blog","description":"Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.","@type":"WebPage","url":"/qool-jekyll_step_by_step-loop/blog.html","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Another Jekyll step by step tutorial</h1>
+        <h2>Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <!--five different styles
+1. from gem jekyll-theme-hacker, via its default layout  
+2. from classes in file assets/css/main.scss as link
+3. from classes in file assets/css/main2.scss as import in style tags below
+4. from classes in style tags below
+5. from inline style attributes style="attribute:value"
+-->
+<link rel="stylesheet" href="/qool-jekyll_step_by_step-loop/assets/css/main.css">
+
+<style>
+@import "/qool-jekyll_step_by_step-loop/assets/css/main2.css";
+
+.header_navigation a:active {
+  background-color: rgba(160,160,0,100);
+  color: white;
+}
+</style>
+
+
+<div>
+  <nav id="header_navigation" class="header_navigation">
+    
+    <a href="/qool-jekyll_step_by_step-loop/" 
+       >
+      Home
+    </a>
+
+    
+    <a href="/qool-jekyll_step_by_step-loop/about/" 
+       >
+      About
+    </a>
+
+    
+    <a href="/qool-jekyll_step_by_step-loop/blog.html" 
+       
+       style="color: green;" 
+       >
+      Blog
+    </a>
+
+    
+  </nav>
+</div>
+
+<!--needed to break the float:left after the navi buttons-->
+<div style="clear:both;"></div>
+
+<p>page.url: /blog.html</p>
+
+<br><br>
 <h1>Latest Posts</h1>
 
 <ul>
-  {% for post in site.posts %}
+  
     <li>
       <h2>
-          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          <a href="/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html">Welcome to Jekyll!</a>
       </h2>
-      <p>{{ post.excerpt }}</p>
-      <p>site.baseurl: {{ site.baseurl }}</p>
-      <p>post.url: {{ post.url }}</p>
+      <p><p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+</p>
+      <p>site.baseurl: /qool-jekyll_step_by_step-loop</p>
+      <p>post.url: /jekyll/update/2019/01/22/welcome-to-jekyll.html</p>
     </li>
-  {% endfor %}
+  
+    <li>
+      <h2>
+          <a href="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">Welcome to Jekyll's step by step tutorial!</a>
+      </h2>
+      <p><h2 id="learning-objectives">Learning objectives</h2>
+<p>Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.</p>
+
+</p>
+      <p>site.baseurl: /qool-jekyll_step_by_step-loop</p>
+      <p>post.url: /jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html</p>
+    </li>
+  
 </ul>
+
+      </section>
+    </div>
+
+    
+  </body>
+</html>
