@@ -18,5 +18,33 @@ There are five ways to handle styles. Four of them are shown in the file *_inclu
 4. from classes in style tags below
 5. from inline style attributes style="attribute:value"
 
+<br>
+
+### 💻 About me
+> My name is Roland Benz, I live in Zurich, Switzerland and decided to dedicate my time and knowledge to some projects on GitHub. 
+>
+> <details>
+> <summary markdown='span'> 📖 you can click me  
+> </summary>
+>
+> 💫
+>
+> ##### Donations 
+In case you are an executive of an organization, not knowing, where to invest all the money that is pouring in, there is hope on the horizon. Below you will find a link to my lonely and empty bank account, grateful and happy about any kind of attention.   
+>
+> 💫  
+>    
+> </details>  
+
+
+<p align="center">
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZJSNJNBGL8MVE&source=url" target="_blank">
+  <img src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif"/>
+</a>  
+</p>
+
+------------------------
+qoolixiloop, 25. Jan. 2019  
+
   
 
