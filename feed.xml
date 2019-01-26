@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/qool-jekyll_step_by_step-loop/feed.xml" rel="self" type="application/atom+xml" /><link href="/qool-jekyll_step_by_step-loop/" rel="alternate" type="text/html" /><updated>2019-01-26T01:11:01+01:00</updated><id>/qool-jekyll_step_by_step-loop/feed.xml</id><title type="html">Another Jekyll step by step tutorial</title><subtitle>Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.</subtitle><entry><title type="html">Welcome to Jekyll’s step by step tutorial!</title><link href="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" rel="alternate" type="text/html" title="Welcome to Jekyll's step by step tutorial!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial</id><content type="html" xml:base="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">&lt;h2 id=&quot;learning-objectives&quot;&gt;Learning objectives&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/qool-jekyll_step_by_step-loop/feed.xml" rel="self" type="application/atom+xml" /><link href="/qool-jekyll_step_by_step-loop/" rel="alternate" type="text/html" /><updated>2019-01-26T05:37:45+01:00</updated><id>/qool-jekyll_step_by_step-loop/feed.xml</id><title type="html">Another Jekyll step by step tutorial</title><subtitle>Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.</subtitle><entry><title type="html">Welcome to Jekyll’s step by step tutorial!</title><link href="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" rel="alternate" type="text/html" title="Welcome to Jekyll's step by step tutorial!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial</id><content type="html" xml:base="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">&lt;h2 id=&quot;learning-objectives&quot;&gt;Learning objectives&lt;/h2&gt;
 &lt;p&gt;Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.&lt;/p&gt;
 
 &lt;p&gt;Our journey starts with the minimum of what it takes to build a webpage. We then add a first page, and a reference to load a theme. At that point we have a nicely rendered webpage.&lt;/p&gt;
@@ -80,7 +80,7 @@ at localhost:4000
   &lt;p&gt;$ vim README.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;(for vim newbies: press &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; to input text, copy into system’s clipboard &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;+y&lt;/code&gt;, paste from system’s clipboard &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;+p&lt;/code&gt;, press Esc to leave the input mode, to write from buffer to file &lt;code class=&quot;highlighter-rouge&quot;&gt;:w&lt;/code&gt;, to quit vim &lt;code class=&quot;highlighter-rouge&quot;&gt;:q&lt;/code&gt;.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)&lt;/p&gt;
+&lt;p&gt;(for vim newbies: press i to input text, select text with v or V and copy into system’s clipboard “+y, paste from system’s clipboard “+p, press Esc to leave the input mode, to write from buffer to file :w, to quit vim :q.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)&lt;/p&gt;
 
 &lt;h3 id=&quot;6-check-directory&quot;&gt;6) Check directory&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -130,6 +130,8 @@ _site&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;9-stop-and-start-server&quot;&gt;9) Stop and Start server&lt;/h3&gt;
+&lt;p&gt;Whenever you read to stop and start server:  press Ctrl-c to stop it.&lt;/p&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;$ jekyll serve&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -245,7 +247,7 @@ title: Home
 
 &lt;h3 id=&quot;15-copy-the-gem-code-into-your-repository&quot;&gt;15) Copy the gem code into your repository&lt;/h3&gt;
 
-&lt;p&gt;Let’s open the Filemanager and show the folder of the dinky theme. The command works on linux, mac uses &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s open the file manager and show the folder of the dinky theme. The command works on linux, mac uses &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;$ xdg-open $(bundle show dinky)&lt;/p&gt;
@@ -261,7 +263,7 @@ title: Home
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;16-comment-the-theme&quot;&gt;16) Comment the theme&lt;/h3&gt;
-&lt;p&gt;We are going to comment the line, saying jekyll to load a theme.&lt;/p&gt;
+&lt;p&gt;We are going to comment the line saying, jekyll to load a theme.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;$ vim _config.yml&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -524,17 +526,17 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 &lt;h3 id=&quot;28-copypaste-this-readmemd-into-a-new-post&quot;&gt;28) Copy/paste this README.md into a new post&lt;/h3&gt;
 &lt;p&gt;First we copy it into the root of the new repository, or just copy/paste it with a file manager.&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;cp relative_path_to_old_repo/README.md  relative_path_to_/repository_name/README.md&lt;/p&gt;
+  &lt;p&gt;relative_path_to_/repository_name/README.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Then we copy/paste it again but this time into the _posts folder.&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;cp relative_path_to_old_repo/README.md  relative_path_to/repository_name/_posts/README.md&lt;/p&gt;
+  &lt;p&gt;relative_path_to/repository_name/_posts/README.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;And rename the file according to the naming converntion for posts. &lt;YYYY-MM-DD-Name.md&gt;&lt;/YYYY-MM-DD-Name.md&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;mv path_to_new_repo/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md&lt;/p&gt;
+  &lt;p&gt;mv relative_path_to/repository_name/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;29-add-front-matter-to-the-post&quot;&gt;29) Add Front Matter to the post&lt;/h3&gt;
@@ -553,28 +555,28 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 
 &lt;h3 id=&quot;30-copypaste-images&quot;&gt;30) Copy/paste images&lt;/h3&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md&lt;/p&gt;
+  &lt;p&gt;relative_path_to_/repository_name/assets/website.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md&lt;/p&gt;
+  &lt;p&gt;relative_path_to_/repository_name/assets/website2.md&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;The path to the images in both the README and the post should be:
 /qool-jekyll_step_by_step-loop/assets/website.jpg
-/assets/website.md&lt;/p&gt;
+/assets/website.jpg&lt;/p&gt;
 
 &lt;p&gt;/qool-jekyll_step_by_step-loop/assets/website2.jpg
-/assets/website2.md&lt;/p&gt;
+/assets/website2.jpg&lt;/p&gt;
 
-&lt;p&gt;There is a better way of doing it, but that’s good enough. The above path is for production environment, and the link below is for development environment. The links are created with following Markdown pattern.&lt;/p&gt;
+&lt;p&gt;There is a better way of doing it, but that’s good enough. The above path is for the production environment, and the link below is for the development environment. The links are created with following Markdown pattern.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![link name](path to asset)  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;lets-deploy-to-github&quot;&gt;Let’s Deploy to GitHub&lt;/h2&gt;
 &lt;h3 id=&quot;31-initialize-git-in-your-repository-root&quot;&gt;31) Initialize git in your repository root&lt;/h3&gt;
-&lt;p&gt;Go to your repositorie’s root and initialize git.&lt;/p&gt;
+&lt;p&gt;Go to your repository’s root and initialize git.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;$ cd relative_path_to/repository_name&lt;/p&gt;
@@ -585,7 +587,7 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;32-adapt-the-gitignore-file&quot;&gt;32) Adapt the .gitignore file&lt;/h3&gt;
-&lt;p&gt;We do not want our  _site folder in our master branch, that’s why the .gitignore file also has the following entry.&lt;/p&gt;
+&lt;p&gt;We do not want our  _site folder in our remot master branch, that’s why the .gitignore file also has the following entry.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;$ vim .gitignore&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -600,8 +602,10 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. That way your source on localhost behaves the same way as on Github’s user or project pages, with souce code or with compiled code.&lt;/p&gt;
+  &lt;p&gt;Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. On Github you do not need to and should not define the url. That way your source on localhost behaves the same way as on Github’s user or project pages, with souce code or with compiled code. Here is an example.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;https://qoolixiloop.github.io/qool-jekyll-loop/2019/01/23/tutorial-summary.html&lt;/p&gt;
 
 &lt;h4 id=&quot;for-a-user-page-with-compiled-code&quot;&gt;For a user page with compiled code&lt;/h4&gt;
 &lt;p&gt;baseurl: “” # the subpath of your site, e.g. /blog&lt;/p&gt;
@@ -620,6 +624,10 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
+  &lt;p&gt;(or bundle exec jekyll build; serve also starts the server, listens to file changes and rebuilds automatically)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
   &lt;p&gt;$ git add .&lt;br /&gt;
 (The dot is needed)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -629,6 +637,8 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;35-move-the-compiled-code-to-a-new-branch-root-and-commit&quot;&gt;35) Move the compiled code to a new branch root and commit&lt;/h3&gt;
+&lt;p&gt;Disclaimer: There may be better ways to do this. To copy/paste and delete you can also take the file manager. Whenever you change a branch, git switches your files in the file manager. Just be careful that you are in the gh-pages branch when you start deleting files (use $ git branch to test). As long as you do not delete the .git folder most things can be restored but you need advanced knowledge, a search engine and/or a site like stackoverflow.&lt;/p&gt;
+
 &lt;h4 id=&quot;create-new-branch&quot;&gt;Create new branch&lt;/h4&gt;
 &lt;p&gt;The branch name is not arbitrary. Use gh-pages.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -643,11 +653,13 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 
 &lt;h4 id=&quot;remove-all-files-for-this-branch&quot;&gt;Remove all files for this branch&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;$ git rm -rf .&lt;/p&gt;
+  &lt;p&gt;$ git rm -rf . &lt;br /&gt;
+(dot is needed) &lt;br /&gt;
+(Before you delete: check that you really are in the branch gh-pages and  with $ rf-files, whether you see the _site folder. If you see it, git sees it as well. If you remove it, you have to check it out again with $ git checkout master _site.  Otherwise, you may also take your file manager. What you need in the end is the .git foder, .gitignore file, and the contents of the _site copied out of the folder next to it, .git and .gitignore. Then you can delete _site.)&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;retrieve-gitignore-and-activate-_site-folder&quot;&gt;Retrieve .gitignore and activate _site folder&lt;/h4&gt;
-&lt;p&gt;Now we change the gitignore folder to make _site folder known to git and therefore visible for us in the new branch.&lt;/p&gt;
+&lt;p&gt;Now we change the .gitignore folder to make _site folder known to git and therefore visible for us in the new branch.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;$ git checkout master – .gitignore&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -670,11 +682,11 @@ New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relati
 
 &lt;h4 id=&quot;commit-changes&quot;&gt;Commit changes&lt;/h4&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;$ git commit -m “ content of _site folder and .gitignore”&lt;/p&gt;
+  &lt;p&gt;$ git commit -m “ content of _site folder, .git and .gitignore”&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;36-open-account-and-repository-at-github&quot;&gt;36) Open account and repository at GitHub&lt;/h3&gt;
-&lt;p&gt;Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file, like we just did. Or you can make a user page. With a user page the source code works fine.&lt;/p&gt;
+&lt;p&gt;Go to Github.com, if you do not have one, make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages,  which contains only the _site folder’s content, .git and an own .gitignore file, like we  just did. Or you can make a user page. With a user page the source code  works fine.&lt;/p&gt;
 
 &lt;h4 id=&quot;account-name&quot;&gt;Account name&lt;/h4&gt;
 &lt;p&gt;Choose an account name.&lt;/p&gt;
@@ -707,7 +719,7 @@ project page: https://&amp;lt;my_account&amp;gt;.github.io/&amp;lt;project_name&
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;$ git push –set-upstream origin gh-pages&lt;/p&gt;
+  &lt;p&gt;$ git push –set-upstream origin/gh-pages gh-pages&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
