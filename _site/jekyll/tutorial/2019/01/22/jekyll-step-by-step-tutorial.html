@@ -171,7 +171,7 @@ at localhost:4000
   <p>$ vim README.md</p>
 </blockquote>
 
-<p>(for vim newbies: press <code class="highlighter-rouge">i</code> to input text, copy into system’s clipboard <code class="highlighter-rouge">"+y</code>, paste from system’s clipboard <code class="highlighter-rouge">"+p</code>, press Esc to leave the input mode, to write from buffer to file <code class="highlighter-rouge">:w</code>, to quit vim <code class="highlighter-rouge">:q</code>.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)</p>
+<p>(for vim newbies: press i to input text, select text with v or V and copy into system’s clipboard “+y, paste from system’s clipboard “+p, press Esc to leave the input mode, to write from buffer to file :w, to quit vim :q.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)</p>
 
 <h3 id="6-check-directory">6) Check directory</h3>
 <blockquote>
@@ -221,6 +221,8 @@ _site</p>
 </code></pre></div></div>
 
 <h3 id="9-stop-and-start-server">9) Stop and Start server</h3>
+<p>Whenever you read to stop and start server:  press Ctrl-c to stop it.</p>
+
 <blockquote>
   <p>$ jekyll serve</p>
 </blockquote>
@@ -336,7 +338,7 @@ title: Home
 
 <h3 id="15-copy-the-gem-code-into-your-repository">15) Copy the gem code into your repository</h3>
 
-<p>Let’s open the Filemanager and show the folder of the dinky theme. The command works on linux, mac uses <code class="highlighter-rouge">open</code>.</p>
+<p>Let’s open the file manager and show the folder of the dinky theme. The command works on linux, mac uses <code class="highlighter-rouge">open</code>.</p>
 
 <blockquote>
   <p>$ xdg-open $(bundle show dinky)</p>
@@ -352,7 +354,7 @@ title: Home
 </code></pre></div></div>
 
 <h3 id="16-comment-the-theme">16) Comment the theme</h3>
-<p>We are going to comment the line, saying jekyll to load a theme.</p>
+<p>We are going to comment the line saying, jekyll to load a theme.</p>
 <blockquote>
   <p>$ vim _config.yml</p>
 </blockquote>
@@ -615,17 +617,17 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 <h3 id="28-copypaste-this-readmemd-into-a-new-post">28) Copy/paste this README.md into a new post</h3>
 <p>First we copy it into the root of the new repository, or just copy/paste it with a file manager.</p>
 <blockquote>
-  <p>cp relative_path_to_old_repo/README.md  relative_path_to_/repository_name/README.md</p>
+  <p>relative_path_to_/repository_name/README.md</p>
 </blockquote>
 
 <p>Then we copy/paste it again but this time into the _posts folder.</p>
 <blockquote>
-  <p>cp relative_path_to_old_repo/README.md  relative_path_to/repository_name/_posts/README.md</p>
+  <p>relative_path_to/repository_name/_posts/README.md</p>
 </blockquote>
 
 <p>And rename the file according to the naming converntion for posts. <YYYY-MM-DD-Name.md></YYYY-MM-DD-Name.md></p>
 <blockquote>
-  <p>mv path_to_new_repo/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md</p>
+  <p>mv relative_path_to/repository_name/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md</p>
 </blockquote>
 
 <h3 id="29-add-front-matter-to-the-post">29) Add Front Matter to the post</h3>
@@ -644,28 +646,28 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 
 <h3 id="30-copypaste-images">30) Copy/paste images</h3>
 <blockquote>
-  <p>cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md</p>
+  <p>relative_path_to_/repository_name/assets/website.md</p>
 </blockquote>
 
 <blockquote>
-  <p>cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md</p>
+  <p>relative_path_to_/repository_name/assets/website2.md</p>
 </blockquote>
 
 <p>The path to the images in both the README and the post should be:
 /qool-jekyll_step_by_step-loop/assets/website.jpg
-/assets/website.md</p>
+/assets/website.jpg</p>
 
 <p>/qool-jekyll_step_by_step-loop/assets/website2.jpg
-/assets/website2.md</p>
+/assets/website2.jpg</p>
 
-<p>There is a better way of doing it, but that’s good enough. The above path is for production environment, and the link below is for development environment. The links are created with following Markdown pattern.</p>
+<p>There is a better way of doing it, but that’s good enough. The above path is for the production environment, and the link below is for the development environment. The links are created with following Markdown pattern.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![link name](path to asset)  
 </code></pre></div></div>
 
 <h2 id="lets-deploy-to-github">Let’s Deploy to GitHub</h2>
 <h3 id="31-initialize-git-in-your-repository-root">31) Initialize git in your repository root</h3>
-<p>Go to your repositorie’s root and initialize git.</p>
+<p>Go to your repository’s root and initialize git.</p>
 
 <blockquote>
   <p>$ cd relative_path_to/repository_name</p>
@@ -676,7 +678,7 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 </blockquote>
 
 <h3 id="32-adapt-the-gitignore-file">32) Adapt the .gitignore file</h3>
-<p>We do not want our  _site folder in our master branch, that’s why the .gitignore file also has the following entry.</p>
+<p>We do not want our  _site folder in our remot master branch, that’s why the .gitignore file also has the following entry.</p>
 <blockquote>
   <p>$ vim .gitignore</p>
 </blockquote>
@@ -691,8 +693,10 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 </blockquote>
 
 <blockquote>
-  <p>Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. That way your source on localhost behaves the same way as on Github’s user or project pages, with souce code or with compiled code.</p>
+  <p>Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. On Github you do not need to and should not define the url. That way your source on localhost behaves the same way as on Github’s user or project pages, with souce code or with compiled code. Here is an example.</p>
 </blockquote>
+
+<p>https://qoolixiloop.github.io/qool-jekyll-loop/2019/01/23/tutorial-summary.html</p>
 
 <h4 id="for-a-user-page-with-compiled-code">For a user page with compiled code</h4>
 <p>baseurl: “” # the subpath of your site, e.g. /blog</p>
@@ -711,6 +715,10 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 </blockquote>
 
 <blockquote>
+  <p>(or bundle exec jekyll build; serve also starts the server, listens to file changes and rebuilds automatically)</p>
+</blockquote>
+
+<blockquote>
   <p>$ git add .<br />
 (The dot is needed)</p>
 </blockquote>
@@ -720,6 +728,8 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 </blockquote>
 
 <h3 id="35-move-the-compiled-code-to-a-new-branch-root-and-commit">35) Move the compiled code to a new branch root and commit</h3>
+<p>Disclaimer: There may be better ways to do this. To copy/paste and delete you can also take the file manager. Whenever you change a branch, git switches your files in the file manager. Just be careful that you are in the gh-pages branch when you start deleting files (use $ git branch to test). As long as you do not delete the .git folder most things can be restored but you need advanced knowledge, a search engine and/or a site like stackoverflow.</p>
+
 <h4 id="create-new-branch">Create new branch</h4>
 <p>The branch name is not arbitrary. Use gh-pages.</p>
 <blockquote>
@@ -734,11 +744,13 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 
 <h4 id="remove-all-files-for-this-branch">Remove all files for this branch</h4>
 <blockquote>
-  <p>$ git rm -rf .</p>
+  <p>$ git rm -rf . <br />
+(dot is needed) <br />
+(Before you delete: check that you really are in the branch gh-pages and  with $ rf-files, whether you see the _site folder. If you see it, git sees it as well. If you remove it, you have to check it out again with $ git checkout master _site.  Otherwise, you may also take your file manager. What you need in the end is the .git foder, .gitignore file, and the contents of the _site copied out of the folder next to it, .git and .gitignore. Then you can delete _site.)</p>
 </blockquote>
 
 <h4 id="retrieve-gitignore-and-activate-_site-folder">Retrieve .gitignore and activate _site folder</h4>
-<p>Now we change the gitignore folder to make _site folder known to git and therefore visible for us in the new branch.</p>
+<p>Now we change the .gitignore folder to make _site folder known to git and therefore visible for us in the new branch.</p>
 <blockquote>
   <p>$ git checkout master – .gitignore</p>
 </blockquote>
@@ -761,11 +773,11 @@ New jekyll site installed <span class="k">in </span>relative_path_to/repository_
 
 <h4 id="commit-changes">Commit changes</h4>
 <blockquote>
-  <p>$ git commit -m “ content of _site folder and .gitignore”</p>
+  <p>$ git commit -m “ content of _site folder, .git and .gitignore”</p>
 </blockquote>
 
 <h3 id="36-open-account-and-repository-at-github">36) Open account and repository at GitHub</h3>
-<p>Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file, like we just did. Or you can make a user page. With a user page the source code works fine.</p>
+<p>Go to Github.com, if you do not have one, make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages,  which contains only the _site folder’s content, .git and an own .gitignore file, like we  just did. Or you can make a user page. With a user page the source code  works fine.</p>
 
 <h4 id="account-name">Account name</h4>
 <p>Choose an account name.</p>
@@ -798,7 +810,7 @@ project page: https://&lt;my_account&gt;.github.io/&lt;project_name&gt;
 </blockquote>
 
 <blockquote>
-  <p>$ git push –set-upstream origin gh-pages</p>
+  <p>$ git push –set-upstream origin/gh-pages gh-pages</p>
 </blockquote>
 
 <blockquote>
