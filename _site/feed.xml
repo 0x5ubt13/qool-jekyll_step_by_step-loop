@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/qool-jekyll_step_by_step-loop/feed.xml" rel="self" type="application/atom+xml" /><link href="/qool-jekyll_step_by_step-loop/" rel="alternate" type="text/html" /><updated>2019-01-26T01:11:01+01:00</updated><id>/qool-jekyll_step_by_step-loop/feed.xml</id><title type="html">Another Jekyll step by step tutorial</title><subtitle>Installation without bundler, adding a page, adding a gem based theme, converting the gem based theme to a regular theme, go back to a gem based theme, add a Gemfile for the bundler and publish website on Github.</subtitle><entry><title type="html">Welcome to Jekyll’s step by step tutorial!</title><link href="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html" rel="alternate" type="text/html" title="Welcome to Jekyll's step by step tutorial!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial</id><content type="html" xml:base="/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html">&lt;h2 id=&quot;learning-objectives&quot;&gt;Learning objectives&lt;/h2&gt;
+&lt;p&gt;Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.&lt;/p&gt;
+
+&lt;p&gt;Our journey starts with the minimum of what it takes to build a webpage. We then add a first page, and a reference to load a theme. At that point we have a nicely rendered webpage.&lt;/p&gt;
+
+&lt;p&gt;We then copy/paste the gem based theme source code into our repository and add a reference to a now missing dependency. At that point, we could start changing the theme’s source code and make our own theme. Instead, we take a step back and make the necessary changes to activate another gem based theme.&lt;/p&gt;
+
+&lt;p&gt;Then we add a Gemfile to our repository, which makes sure that our webpage also works, when some dependencies are updated. For this to work we need another gem called bundler, which knows all about the dependencies and generates a Gemfile.lock file, containing all the dependencies and its versions.&lt;/p&gt;
+
+&lt;p&gt;The next step is to make our website behave exacty like the starter template by applying the shell command:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll new &amp;lt;relative_path_to/repository_name&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And finally we are going to upload the source code to the master branch and publish the compiled website in a new branch called gh-pages on Github.&lt;/p&gt;
+
+&lt;p&gt;The result can be accessed with following URL:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://qoolixiloop.github.io/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-make-our-first-website-with-jekyll&quot;&gt;Let’s make our first website with jekyll&lt;/h2&gt;
+&lt;h3 id=&quot;1-create-an-empty-folder&quot;&gt;1) Create an empty folder&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ mkdir relative_path_to/Repository_name&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(For shell newbies: do not write the $ signs.)&lt;/p&gt;
+
+&lt;h3 id=&quot;2-install-gem&quot;&gt;2) Install gem&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ gem install ‘jekyll’&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;Successfully installed jekyll-3.8.5
+Parsing documentation for jekyll-3.8.5
+Done installing documentation for jekyll after 4 seconds
+1 gem installed&lt;/p&gt;
+
+&lt;h3 id=&quot;3-check-directory&quot;&gt;3) Check directory&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-1&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;none&lt;/p&gt;
+
+&lt;h3 id=&quot;4-build-site-and-start-server&quot;&gt;4) Build site and start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-2&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: none
+            Source: relative_path_to/Repository_name
+       Destination: relative_path_to/Repository_name/_site
+ Incremental build: disabled. Enable with &lt;span class=&quot;nt&quot;&gt;--incremental&lt;/span&gt;
+      Generating... 
+                    &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;0.027 seconds.
+ Auto-regeneration: enabled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'relative_path_to/Repository_name'&lt;/span&gt;
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+      Regenerating: 1 file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; changed at 2019-01-21 20:08:40
+                    README.md
+                    ...done &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;0.014883374 seconds.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;browser-output&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Index of /
+Name	Last modified	Size
+Parent Directory	2019/01/21 20:07	-
+README.md	2019/01/21 20:06	474
+WEBrick/1.4.2 (Ruby/2.6.0/2018-12-25)
+at localhost:4000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;It does not show the folder with name _size because the  _size folder is the Parent Directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-add-readmemd&quot;&gt;5) Add README.md&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim README.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(for vim newbies: press &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; to input text, copy into system’s clipboard &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;+y&lt;/code&gt;, paste from system’s clipboard &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;+p&lt;/code&gt;, press Esc to leave the input mode, to write from buffer to file &lt;code class=&quot;highlighter-rouge&quot;&gt;:w&lt;/code&gt;, to quit vim &lt;code class=&quot;highlighter-rouge&quot;&gt;:q&lt;/code&gt;.  Whenever you see a vim command, you have to finish the step with writing and quitting vim.)&lt;/p&gt;
+
+&lt;h3 id=&quot;6-check-directory&quot;&gt;6) Check directory&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-3&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;README.md&lt;br /&gt;
+_site&lt;/p&gt;
+
+&lt;h3 id=&quot;7-add-indexhtml-file&quot;&gt;7) Add Index.html file&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim index.html&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
+&lt;p&gt;Jekyll only needs the body tag.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  the html tag and head tag can be removed --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello World!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;browser-output-1&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hello World!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;It has no theme.&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-make-our-first-webpage-with-theme&quot;&gt;Let’s make our first webpage with theme&lt;/h2&gt;
+&lt;h3 id=&quot;8-add-_configyml-file-and-theme&quot;&gt;8) Add _config.yml file and theme&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim _config.yml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-1&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# You can have multiple themes in your Gemfile,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# but only one in _config.yml can be loaded by jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# whitelisted theme gems work&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-theme-dinky&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-merlot&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-hacker&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# not whitelisted theme gems do not work&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: hyde  ##does not work&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;9-stop-and-start-server&quot;&gt;9) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-4&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: relative_path_to/Repository_name/_config.yml
+Invalid theme folder: _includes
+            Source: relative_path_to/Repository_name
+       Destination: relative_path_to/Repository_name/_site
+ Incremental build: disabled. Enable with &lt;span class=&quot;nt&quot;&gt;--incremental&lt;/span&gt;
+      Generating... 
+                    &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;0.583 seconds.
+ Auto-regeneration: enabled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'relative_path_to/Repository_name'&lt;/span&gt;
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+      Regenerating: 1 file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; changed at 2019-01-21 20:52:09
+                    index.html
+                    ...done &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;0.218392727 seconds.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There is a warning saying &lt;em&gt;Invalid theme folder: _includes&lt;/em&gt;. We will investigate later.&lt;/p&gt;
+
+&lt;h3 id=&quot;10-add-front-matter-to-indexhtml&quot;&gt;10) Add Front Matter to index.html&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim index.html&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-2&quot;&gt;Input:&lt;/h4&gt;
+&lt;p&gt;Front matter is jekylls way to add variables to a file and give instructions like the layout we want to apply to the file&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Home
+---
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  no theme will be loaded without the front matter above --&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  the html tag and head tag can be removed --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello World!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;11-stop-and-start-server&quot;&gt;11) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-5&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;There is still the warning saying &lt;em&gt;Invalid theme folder: _includes&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;browser-output-2&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;p&gt;no change&lt;/p&gt;
+
+&lt;h3 id=&quot;12-add--the-default-layout-to-the-front-matter-in-indexhtml&quot;&gt;12) Add  the default layout to the Front Matter in index.html&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim index.html&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-3&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+title: Home
+---
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  no theme will be loaded without the front matter above --&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--  the html tag and head tag can be removed --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello World!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since we have no default.html file, jekyll is taking the one from the theme we defined in step 8).&lt;/p&gt;
+
+&lt;h3 id=&quot;13-stop-and-start-server&quot;&gt;13) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-6&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;There is still the warning saying &lt;em&gt;Invalid theme folder: _includes&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;browser-output-3&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;ta da!&lt;br /&gt;
+&lt;img src=&quot;/qool-jekyll_step_by_step-loop/assets/img/website.jpg&quot; alt=&quot;webpage&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;lets-convert-the-gem-based-theme-to-a-regular-theme&quot;&gt;Let’s convert the gem based theme to a regular theme&lt;/h2&gt;
+&lt;h3 id=&quot;14-understand-the-warning-about-_includes&quot;&gt;14) Understand the warning about _includes&lt;/h3&gt;
+&lt;p&gt;The command shows the path to the gem.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle show dinky&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-7&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/home/benzro/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-dinky-0.1.1
+/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/jekyll-theme-hacker-0.1.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can check the content as follows or just use a file manager.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls $(bundle show dinky)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-8&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assets  _layouts  LICENSE  README.md  _sass
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The warning obviously just means, that the dinky theme has no _includes folder. We could add one and the warning would disappear until the theme gets updated. So, we just ignore it and do something else. We convert the gem based theme into a regular theme.&lt;/p&gt;
+
+&lt;h3 id=&quot;15-copy-the-gem-code-into-your-repository&quot;&gt;15) Copy the gem code into your repository&lt;/h3&gt;
+
+&lt;p&gt;Let’s open the Filemanager and show the folder of the dinky theme. The command works on linux, mac uses &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ xdg-open $(bundle show dinky)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We now copy/paste the whole content of the dinky theme via file manager into our repostitory. You should have the following folder structure in  your repository.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-9&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assets  _config.yml  index.html  _layouts  LICENSE  README.md  _sass  _site  website.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;16-comment-the-theme&quot;&gt;16) Comment the theme&lt;/h3&gt;
+&lt;p&gt;We are going to comment the line, saying jekyll to load a theme.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim _config.yml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-4&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# You can have multiple themes in your Gemfile,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# but only one in _config.yml can be loaded by jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# some whitelisted theme gems &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: minima&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-dinky&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-merlot&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-hacker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;17-stop-and-start-server&quot;&gt;17) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-10&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;We get the following error: &lt;br /&gt;
+Liquid Exception: Liquid syntax error (line 7): Unknown tag ‘seo’ in /_layouts/default.html&lt;/p&gt;
+
+&lt;p&gt;This is, what we should expect, when integrating the gem source into our repository. If the theme was hosted at RubyGems.org, we would have a  .gemspec file showing the gems/plugins the theme depends on. But the source we copied didn’t have a .gemspec file, so we can assume for the whitelisted GitHub themes, hosted on github, some magic is going on behind the scenes.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at the source code at line 7. Its a command for the seo gem.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;!-- Begin Jekyll SEO tag v2.5.0 --&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;title&gt;Welcome to Jekyll’s step by step tutorial! | Another Jekyll step by step tutorial&lt;/title&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;Jekyll v3.8.5&quot; /&gt;
+
+&lt;meta property=&quot;og:title&quot; content=&quot;Welcome to Jekyll’s step by step tutorial!&quot; /&gt;
+
+&lt;meta property=&quot;og:locale&quot; content=&quot;en_US&quot; /&gt;
+
+&lt;meta name=&quot;description&quot; content=&quot;Learning objectives Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.&quot; /&gt;
+
+&lt;meta property=&quot;og:description&quot; content=&quot;Learning objectives Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.&quot; /&gt;
+
+&lt;link rel=&quot;canonical&quot; href=&quot;/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&quot; /&gt;
+
+&lt;meta property=&quot;og:url&quot; content=&quot;/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&quot; /&gt;
+
+&lt;meta property=&quot;og:site_name&quot; content=&quot;Another Jekyll step by step tutorial&quot; /&gt;
+
+&lt;meta property=&quot;og:type&quot; content=&quot;article&quot; /&gt;
+
+&lt;meta property=&quot;article:published_time&quot; content=&quot;2019-01-22T03:56:34+01:00&quot; /&gt;
+
+&lt;script type=&quot;application/ld+json&quot;&gt;
+{&quot;headline&quot;:&quot;Welcome to Jekyll’s step by step tutorial!&quot;,&quot;dateModified&quot;:&quot;2019-01-22T03:56:34+01:00&quot;,&quot;datePublished&quot;:&quot;2019-01-22T03:56:34+01:00&quot;,&quot;description&quot;:&quot;Learning objectives Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.&quot;,&quot;@type&quot;:&quot;BlogPosting&quot;,&quot;mainEntityOfPage&quot;:{&quot;@type&quot;:&quot;WebPage&quot;,&quot;@id&quot;:&quot;/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&quot;},&quot;url&quot;:&quot;/qool-jekyll_step_by_step-loop/jekyll/tutorial/2019/01/22/jekyll-step-by-step-tutorial.html&quot;,&quot;@context&quot;:&quot;http://schema.org&quot;}&lt;/script&gt;
+
+&lt;!-- End Jekyll SEO tag --&gt;
+
+&lt;h3 id=&quot;18-add-the-missing-plugin&quot;&gt;18) Add the missing plugin&lt;/h3&gt;
+&lt;p&gt;We are obviously missing a gem, which jekyll calls plugin. So, lets add the jekyll-seo-tag plugin.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim _config.yml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-5&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# You can have multiple themes in your Gemfile,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# but only one in _config.yml can be loaded by jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# some whitelisted theme gems &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: minima&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-dinky&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-merlot&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-hacker&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-seo-tag&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;19-stop-and-start-server&quot;&gt;19) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-11&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;The warning &lt;em&gt;Invalid theme folder: _includes&lt;/em&gt; also magically disappeared even though, our theme still doesn’t have an _includes folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;browser-output-4&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;and boom, we are back again!&lt;br /&gt;
+&lt;img src=&quot;/qool-jekyll_step_by_step-loop/assets/img/website.jpg&quot; alt=&quot;webpage&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;20-lets-try-and-activate-the-merlot-theme&quot;&gt;20) Let’s try and activate the merlot-theme&lt;/h3&gt;
+&lt;p&gt;We now uncomment the line telling jekyll to load the merlot theme.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim _config.yml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-6&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# You can have multiple themes in your Gemfile,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# but only one in _config.yml can be loaded by jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# some whitelisted theme gems &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: minima&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-dinky&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-theme-merlot&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#theme: jekyll-theme-hacker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;21-stop-and-start-server&quot;&gt;21) Stop and Start server&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-12&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;And the warning saying &lt;em&gt;Invalid theme folder: _includes&lt;/em&gt; is back again. But the browser is still showing the dinky theme.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is an important lesson, because it shows, how jekyll works. It goes to the Merlot theme gem, complains about the missing _includes folder, and starts loading the theme files, which are not present in our repository. But because we have the dinky source in our repository, which follows the same naming convention, the dinky theme remains active. And this is also the reason, why some smart people invented gem based themes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;22-rename-the-folders&quot;&gt;22) Rename the folders&lt;/h3&gt;
+&lt;h4 id=&quot;input-7&quot;&gt;Input:&lt;/h4&gt;
+&lt;p&gt;Let’s rename the theme folders. I just added an underscore at the end of the three theme folders.&lt;/p&gt;
+
+&lt;h4 id=&quot;output-13&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;The server starts complaining after the first renaming, but after all three folders have been renamed and the browser is refreshed, it shows the new theme.&lt;/p&gt;
+
+&lt;h4 id=&quot;browser-output-5&quot;&gt;Browser output:&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;howdy, merlot!&lt;br /&gt;
+&lt;img src=&quot;/qool-jekyll_step_by_step-loop/assets/img/website2.jpg&quot; alt=&quot;webpage&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You should now have the following folder structure.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-14&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;assets_  &lt;em&gt;config.yml  index.html  _layouts&lt;/em&gt;  LICENSE  README.md  &lt;em&gt;sass&lt;/em&gt;  _site  website.jpg&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-lock-the-dependencies&quot;&gt;Let’s lock the dependencies&lt;/h2&gt;
+&lt;h3 id=&quot;23-add-a-gemfile-file&quot;&gt;23) Add a Gemfile file&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim Gemfile&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-8&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source 'https://rubygems.org'
+gem 'jekyll'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is similar to what we did in step 2), but now we let the bundler gem lock the dependencies.&lt;/p&gt;
+
+&lt;h3 id=&quot;24-install-bundler&quot;&gt;24) Install bundler&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ gem install ‘bundler’&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;25-install-gems-and-generate-gemfilelock-file&quot;&gt;25) Install gems and generate Gemfile.lock file&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle install&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-15&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from https://rubygems.org/............                                                                           
+Fetching gem metadata from https://rubygems.org/..                                                                                     
+Resolving dependencies...                                                                                                              
+Using public_suffix 3.0.3                                                                                                              
+Using addressable 2.6.0                                                                                                                
+Using bundler 2.0.1                                                                                                                    
+Using colorator 1.1.0                                                                                                                  
+Using concurrent-ruby 1.1.4                                                                                                            
+Using eventmachine 1.2.7                                                                                                               
+Using http_parser.rb 0.6.0                                                                                                             
+Using em-websocket 0.5.1                                                                                                               
+Using ffi 1.10.0                                                                                                                       
+Using forwardable-extended 2.6.0                                                                                                       
+Using i18n 0.9.5                                                                                                                       
+Using rb-fsevent 0.10.3                                                                                                                
+Using rb-inotify 0.10.0                                                                                                                
+Using sass-listen 4.0.0                                                                                                                
+Using sass 3.7.3                                                                                                                       
+Using jekyll-sass-converter 1.5.2                                                                                                      
+Using ruby_dep 1.5.0                                                                                                                   
+Using listen 3.1.5                                                                                                                     
+Using jekyll-watch 2.1.2                                                                                                               
+Using kramdown 1.17.0                                                                                                                  
+Using liquid 4.0.1                                                                                                                     
+Using mercenary 0.3.6                                                                                                                  
+Using pathutil 0.16.2
+Using rouge 3.3.0
+Using safe_yaml 1.0.4
+Using jekyll 3.8.5
+Bundle &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; 1 Gemfile dependency, 26 gems now installed.
+Use &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;bundle info &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;gemname]&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; to see where a bundled gem is installed.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;26-check-directories&quot;&gt;26) Check directories&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ ls&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;output-16&quot;&gt;Output:&lt;/h4&gt;
+&lt;p&gt;assets_  &lt;em&gt;config.yml  Gemfile  Gemfile.lock  index.html  _layouts&lt;/em&gt;  LICENSE  README.md  &lt;em&gt;sass&lt;/em&gt;  _site&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-turn-the-website-into-the-default-website&quot;&gt;Let’s turn the website into the default website&lt;/h2&gt;
+&lt;p&gt;We make now a new website and add the content of this README.md file to a new post.&lt;/p&gt;
+
+&lt;h3 id=&quot;27-new-website&quot;&gt;27) New website&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ mkdir relative_path_to/repository_name&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ jekyll new .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(The dot is needed)&lt;/p&gt;
+
+&lt;h4 id=&quot;output-17&quot;&gt;Output:&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Running bundle &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relative_path_to repository_name...                                                                                                              
+  Bundler: The dependency tzinfo-data &lt;span class=&quot;o&quot;&gt;(&amp;gt;=&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will be unused by any of the platforms Bundler is installing &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Bundler is installing &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;ruby but the dependency is only &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;bundle lo
+ck &lt;span class=&quot;nt&quot;&gt;--add-platform&lt;/span&gt; x86-mingw32 x86-mswin32 x64-mingw32 java&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;                                                                           
+  Bundler: Fetching gem metadata from https://rubygems.org/...........                                                                 
+  Bundler: Fetching gem metadata from https://rubygems.org/.                                                                           
+  Bundler: Resolving dependencies....                                                                                                  
+  Bundler: Using public_suffix 3.0.3                                                                                                   
+  Bundler: Using addressable 2.6.0                                                                                                     
+  Bundler: Using bundler 1.17.2                                                                                                        
+  Bundler: Using colorator 1.1.0                                                                                                       
+  Bundler: Using concurrent-ruby 1.1.4                                                                                                 
+  Bundler: Using eventmachine 1.2.7                                                                                                    
+  Bundler: Using http_parser.rb 0.6.0                                                                                                  
+  Bundler: Using em-websocket 0.5.1                                                                                                    
+  Bundler: Using ffi 1.10.0
+  Bundler: Using forwardable-extended 2.6.0
+  Bundler: Using i18n 0.9.5
+  Bundler: Using rb-fsevent 0.10.3
+  Bundler: Using rb-inotify 0.10.0
+  Bundler: Using sass-listen 4.0.0
+  Bundler: Using sass 3.7.3
+  Bundler: Using jekyll-sass-converter 1.5.2
+  Bundler: Using ruby_dep 1.5.0
+  Bundler: Using listen 3.1.5
+  Bundler: Using jekyll-watch 2.1.2
+  Bundler: Using kramdown 1.17.0
+  Bundler: Using liquid 4.0.1
+  Bundler: Using mercenary 0.3.6
+  Bundler: Using pathutil 0.16.2
+  Bundler: Using rouge 3.3.0
+  Bundler: Using safe_yaml 1.0.4
+  Bundler: Using jekyll 3.8.5
+  Bundler: Using jekyll-feed 0.11.0
+  Bundler: Using jekyll-seo-tag 2.5.0
+  Bundler: Using minima 2.5.0
+  Bundler: Bundle &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; 4 Gemfile dependencies, 29 gems now installed.
+  Bundler: Use &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;bundle info &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;gemname]&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; to see where a bundled gem is installed.
+New jekyll site installed &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;relative_path_to/repository_name.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;28-copypaste-this-readmemd-into-a-new-post&quot;&gt;28) Copy/paste this README.md into a new post&lt;/h3&gt;
+&lt;p&gt;First we copy it into the root of the new repository, or just copy/paste it with a file manager.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;cp relative_path_to_old_repo/README.md  relative_path_to_/repository_name/README.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then we copy/paste it again but this time into the _posts folder.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;cp relative_path_to_old_repo/README.md  relative_path_to/repository_name/_posts/README.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And rename the file according to the naming converntion for posts. &lt;YYYY-MM-DD-Name.md&gt;&lt;/YYYY-MM-DD-Name.md&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;mv path_to_new_repo/_posts/README.md relative_path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;29-add-front-matter-to-the-post&quot;&gt;29) Add Front Matter to the post&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim relative path_to/repository_name/_posts/2019-01-19-jekyll-step-by-step-tutorial.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-9&quot;&gt;Input:&lt;/h4&gt;
+&lt;div class=&quot;language-md highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Welcome&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Jekyll's&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;by&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;tutorial!&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;s&quot;&gt;2019-01-22 03:56:34 +0100&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll tutorial&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;30-copypaste-images&quot;&gt;30) Copy/paste images&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;cp relative_path_to_old_repo/website.md  relative_path_to_/repository_name/assets/website.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;cp relative_path_to_old_repo/website2.md  relative_path_to_/repository_name/assets/website2.md&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The path to the images in both the README and the post should be:
+/qool-jekyll_step_by_step-loop/assets/website.jpg
+/assets/website.md&lt;/p&gt;
+
+&lt;p&gt;/qool-jekyll_step_by_step-loop/assets/website2.jpg
+/assets/website2.md&lt;/p&gt;
+
+&lt;p&gt;There is a better way of doing it, but that’s good enough. The above path is for production environment, and the link below is for development environment. The links are created with following Markdown pattern.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![link name](path to asset)  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;lets-deploy-to-github&quot;&gt;Let’s Deploy to GitHub&lt;/h2&gt;
+&lt;h3 id=&quot;31-initialize-git-in-your-repository-root&quot;&gt;31) Initialize git in your repository root&lt;/h3&gt;
+&lt;p&gt;Go to your repositorie’s root and initialize git.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ cd relative_path_to/repository_name&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git init&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;32-adapt-the-gitignore-file&quot;&gt;32) Adapt the .gitignore file&lt;/h3&gt;
+&lt;p&gt;We do not want our  _site folder in our master branch, that’s why the .gitignore file also has the following entry.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim .gitignore&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_site/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;33-adapt-the-_configyml-file&quot;&gt;33) Adapt the _config.yml file&lt;/h3&gt;
+&lt;p&gt;You may change here to another whitelisted theme, which is more appealing to you.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ vim _config.yml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. That way your source on localhost behaves the same way as on Github’s user or project pages, with souce code or with compiled code.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;for-a-user-page-with-compiled-code&quot;&gt;For a user page with compiled code&lt;/h4&gt;
+&lt;p&gt;baseurl: “” # the subpath of your site, e.g. /blog&lt;/p&gt;
+
+&lt;p&gt;url: “” # the base hostname &amp;amp; protocol for your site, e.g. http:/&lt;/p&gt;
+
+&lt;h4 id=&quot;for-a-project-page&quot;&gt;For a project page&lt;/h4&gt;
+&lt;p&gt;baseurl: “/repository name” # the subpath of your site, e.g. /blog&lt;/p&gt;
+
+&lt;p&gt;url: “” # the base hostname &amp;amp; protocol for your site, e.g. http:/&lt;/p&gt;
+
+&lt;h3 id=&quot;34-build-the-site-and-commit&quot;&gt;34) Build the site and commit&lt;/h3&gt;
+&lt;p&gt;With the Gemfile and bundler we need to adapt our build and serve commands.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle exec jekyll serve&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git add .&lt;br /&gt;
+(The dot is needed)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git commit -m “source code”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;35-move-the-compiled-code-to-a-new-branch-root-and-commit&quot;&gt;35) Move the compiled code to a new branch root and commit&lt;/h3&gt;
+&lt;h4 id=&quot;create-new-branch&quot;&gt;Create new branch&lt;/h4&gt;
+&lt;p&gt;The branch name is not arbitrary. Use gh-pages.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git branch gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;check-out-to-new-branch&quot;&gt;Check out to new branch&lt;/h4&gt;
+&lt;p&gt;This will copy the snapshot from master branch into the new branch.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;remove-all-files-for-this-branch&quot;&gt;Remove all files for this branch&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git rm -rf .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;retrieve-gitignore-and-activate-_site-folder&quot;&gt;Retrieve .gitignore and activate _site folder&lt;/h4&gt;
+&lt;p&gt;Now we change the gitignore folder to make _site folder known to git and therefore visible for us in the new branch.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout master – .gitignore&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Remove the line _site.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;vim .gitignore&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;input-10&quot;&gt;Input&lt;/h4&gt;
+&lt;p&gt;remove _site from .gitignore file&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.sass-cache
+.jekyll-metadata
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The folder _site now becomes visible in the new branch.&lt;/p&gt;
+
+&lt;h4 id=&quot;_site-folder-contents&quot;&gt;_site folder contents&lt;/h4&gt;
+&lt;p&gt;Move the contents of the _site folder to root, i.e. where the _site folder is and delete it. The index.html file must reside in repository branch root, otherwise it is not going to work. You can take your file manager or use &lt;code class=&quot;highlighter-rouge&quot;&gt;mv&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git mv&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;h4 id=&quot;commit-changes&quot;&gt;Commit changes&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git commit -m “ content of _site folder and .gitignore”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;36-open-account-and-repository-at-github&quot;&gt;36) Open account and repository at GitHub&lt;/h3&gt;
+&lt;p&gt;Go to Github.com, if you do not have one make an account and add a repository. Following the naming pattern below. The project page didn’t work for me to host the source code and have it built with jekyll, because the _config.yml is either not read or not updated. But this does not mean it can not be done. Anyway, you can make a branch gh-pages, which contains only the _site folder and an own .gitignore file, like we just did. Or you can make a user page. With a user page the source code works fine.&lt;/p&gt;
+
+&lt;h4 id=&quot;account-name&quot;&gt;Account name&lt;/h4&gt;
+&lt;p&gt;Choose an account name.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;my_account&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;repository-name-for-a-user-page&quot;&gt;Repository name for a user page&lt;/h4&gt;
+&lt;p&gt;This is a special repository. You can only have one user page per user account, with exactly the following naming condition.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;my_account&amp;gt;.github.io  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;repository-name-for-a-project-page&quot;&gt;Repository name for a project page&lt;/h4&gt;
+&lt;p&gt;If there would not be a user page repository, this would probably be called repository page, instead of project page.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;project_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;website-url&quot;&gt;Website URL&lt;/h4&gt;
+&lt;p&gt;After uploading, the website is accessible under:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user page: https://&amp;lt;my_account&amp;gt;.github.io    
+project page: https://&amp;lt;my_account&amp;gt;.github.io/&amp;lt;project_name&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;settings&quot;&gt;Settings&lt;/h4&gt;
+&lt;p&gt;In your repostitory on Github go to settings tab, scroll down to GitHub Pages section and choose your branch (master, master/docs or gh-pages).&lt;/p&gt;
+
+&lt;h3 id=&quot;37-push-both-branches-of-your-website-to-github&quot;&gt;37) Push both branches of your website to GitHub.&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git push –set-upstream origin gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout master&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git push&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;congratulation&quot;&gt;Congratulation!&lt;/h2&gt;
+&lt;p&gt;You have just hosted your first webpage on Github.&lt;/p&gt;
+
+&lt;h2 id=&quot;rebuild&quot;&gt;Rebuild&lt;/h2&gt;
+&lt;p&gt;In case you want to upload an updated version to the gh-pages branch repeat following steps.&lt;/p&gt;
+
+&lt;h3 id=&quot;38-checkout-master-branch-and-change-source&quot;&gt;38) Checkout master branch and change source&lt;/h3&gt;
+&lt;p&gt;It assumes you make your changes in the master branch. Check that you are in the master branch before you start making changes and rebuild.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git branch&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If the output is not master, checkout to master branch.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout master.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Make your changes to the source code.&lt;/p&gt;
+
+&lt;h4 id=&quot;change-theme&quot;&gt;Change theme&lt;/h4&gt;
+&lt;p&gt;When changing from minima to  one of the whitelisted GitHub themes some steps have to be taken. I am going to take the jekyll-theme-hacker.&lt;/p&gt;
+
+&lt;h5 id=&quot;i-change-configyml-and-replace-minima-with--hacker-theme&quot;&gt;i) Change config.yml and replace minima with  hacker theme&lt;/h5&gt;
+&lt;p&gt;theme: jekyll-theme-hacker&lt;/p&gt;
+
+&lt;p&gt;If you now try to build you get an error.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle update&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle exec jekyll build&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll 3.8.5 | Error:  The jekyll-theme-hacker theme could not be found.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;ii-change-the-gemfile-file&quot;&gt;ii) Change the Gemfile file&lt;/h5&gt;
+&lt;p&gt;The search engine finds for you the following link:&lt;br /&gt;
+https://rubygems.org/gems/jekyll-theme-hacker/versions/0.1.0&lt;/p&gt;
+
+&lt;p&gt;Copy the line for the Gemfile and add it to the Gemfile file&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem 'jekyll-theme-hacker', '~&amp;gt; 0.1.0'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you now try to build you get another error.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle update&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle exec jekyll build&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Build Warning: Layout 'page' requested in about.md does not exist.
+Build Warning: Layout 'home' requested in index.md does not exist.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Obviously jekyll’s site template has two additional layout files for posts and about pages. Instead of changing our content, we just add the two layout files and make a redirect to existing layout files in the hacker theme.&lt;/p&gt;
+
+&lt;h5 id=&quot;iii-add-folder-_layouts-and-two-files-postshtml-and-pageshtml-in-it&quot;&gt;iii) Add folder _layouts and two files posts.html and pages.html in it.&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# home.html
+---
+layout: default
+---
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# page.html
+---
+layout: default
+---
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now also the rebuild should work.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle exec jekyll build&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;39-build-the-site-and-commit&quot;&gt;39) Build the site and commit&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ bundle exec jekyll build&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git add .&lt;br /&gt;
+(The dot is needed)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git commit -m “source code”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;40-move-the-compiled-code-to-gh-pages-root-and-commit&quot;&gt;40) Move the compiled code to gh-pages root and commit&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Again files and folders are copied over from the master branch. Assuming we still have the .gitignore from step 35) we should also see the _site folder.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git status&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;_site-folder-contents-1&quot;&gt;_site folder contents&lt;/h4&gt;
+&lt;p&gt;Move the contents of the _site folder to root, i.e. where the _site folder is and delete it. The index.html file must reside in repository branch root, otherwise it is not going to work. You can take your file manager or use &lt;code class=&quot;highlighter-rouge&quot;&gt;mv&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git mv&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;h4 id=&quot;commit-changes-1&quot;&gt;Commit changes&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git commit -m “ updated content of _site folder”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;41-push-both-branches-of-your-website-to-github&quot;&gt;41) Push both branches of your website to GitHub.&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout gh-pages&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git push&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git checkout master&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ git push&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;qoolixiloop, 22. Jan. 2019&lt;/p&gt;</content><author><name></name></author><summary type="html">Learning objectives Throughout each of the following steps you will see the output, are confronted with error messages, learn, what’s going on behind the scenes and see, how easy it then becomes to make it all work.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-01-22T03:56:34+01:00</published><updated>2019-01-22T03:56:34+01:00</updated><id>/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll</id><content type="html" xml:base="/qool-jekyll_step_by_step-loop/jekyll/update/2019/01/22/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

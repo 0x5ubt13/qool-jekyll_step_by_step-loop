@@ -1,0 +1,8 @@
+.header_navigation a {
+  float: left;
+  /*COMMENT: -top, -right, -bottom, -left*/
+  padding: 14px 20px 14px 20px;
+  background-color: #282828;
+  text-align: center;
+  border: 2px solid #3c3c3c;
+  border-radius: 15px; }
