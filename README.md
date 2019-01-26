@@ -515,7 +515,7 @@ You may change here to another whitelisted theme, which is more appealing to you
 
 > Important: If you are hosting on Github, the best way is to make the following changes at the beginning of the project and add to all links the baseurl. On Github you do not need to and should not define the url. That way your source on localhost behaves the same way as on Github's user or project pages, with souce code or with compiled code. Here is an example.
 
-https://qoolixiloop.github.io/qool-jekyll-loop/2019/01/23/tutorial-summary.html  
+> https://qoolixiloop.github.io/qool-jekyll-loop/  
 
 #### For a user page with compiled code
 baseurl: "" # the subpath of your site, e.g. /blog  
